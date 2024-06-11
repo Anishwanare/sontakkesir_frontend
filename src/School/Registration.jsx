@@ -7,9 +7,11 @@ const Registration = () => {
   const [location, setLocation] = useState("");
   const [schoolId, setSchoolId] = useState("");
   const [password, setPassword] = useState("");
+  const [loading,setLoading] = useState(false);
 
   // Function to handle form submission
   const handleSubmit = async (e) => {
+    setLoading(true)
     e.preventDefault();
 
     try {
@@ -38,6 +40,9 @@ const Registration = () => {
       // Handling any errors
       toast.error("Failed to register. Please try again later.");
       console.error("Error:", error);
+    }
+    finally{
+      setLoading(false)
     }
   };
 
@@ -109,7 +114,7 @@ const Registration = () => {
               type="submit"
               className="px-4 py-2 font-bold text-white bg-green-500 rounded-full hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
             >
-              REGISTER
+              {loading? 'Loading...':'Register'}
             </button>
           </div>
         </form>
