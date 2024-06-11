@@ -6,8 +6,10 @@ const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     // console.log(name, email, message);
 
@@ -38,6 +40,8 @@ const Contact = () => {
     } catch (error) {
       console.error("Error:", error);
       // toast.error("Failed to send message. Please try again later.");
+    } finally {
+      setLoading(false);
     }
   };
   return (
@@ -92,7 +96,7 @@ const Contact = () => {
               type="submit"
               className="w-full bg-yellow-500 text-white py-2 rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500"
             >
-              SEND MESSAGE
+              {loading ? "SENDING....." : "SEND MESSAGE"}
             </button>
           </form>
         </div>
