@@ -25,7 +25,9 @@ const Header = () => {
   return (
     <header className="bg-white shadow relative ">
       <div className="container mx-auto px-4 py-6 flex justify-between items-center">
-        <img src="https://placehold.co/100x50" alt="Logo" className="h-10" />
+        <Link to={"/"}>
+          <img src="/logo.jpeg" alt="Logo" className="h-10" />
+        </Link>
         <button onClick={handleMenu} className="lg:hidden">
           {menu ? <CloseIcon /> : <MenuIcon />}
         </button>
@@ -59,7 +61,7 @@ const Header = () => {
               leaveFrom="transform opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-95"
             >
-              <MenuItems className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+              <MenuItems className=" absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                 <div className="py-1">
                   <MenuItem>
                     {({ active }) => (
@@ -137,7 +139,8 @@ const Header = () => {
                 <div className="py-1">
                   <MenuItem>
                     {({ active }) => (
-                      <Link to={"/student-login"}
+                      <Link
+                        to={"/student-login"}
                         href="#"
                         className={classNames(
                           active
