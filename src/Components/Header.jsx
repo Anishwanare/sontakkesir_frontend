@@ -140,8 +140,7 @@ const Header = () => {
                   <MenuItem>
                     {({ active }) => (
                       <Link
-                        to={"/student-login"}
-                        href="#"
+                        to={"/student-register"}
                         className={classNames(
                           active
                             ? "bg-gray-100 text-gray-900"

@@ -152,7 +152,7 @@ const Registration = () => {
               <label
                 htmlFor=""
                 onClick={handleShowPassword}
-                className="cursor-pointer"
+                className="cursor-pointer text-blue-500"
               >
                 {show ? "Hide" : " Show"}
               </label>
