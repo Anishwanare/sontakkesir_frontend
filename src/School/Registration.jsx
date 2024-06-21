@@ -59,9 +59,9 @@ const Registration = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-200 flex-col">
       <div className="w-full max-w-sm p-8 bg-white rounded-lg shadow-md dark:bg-gray-100">
-      <div className="text-center p-2 text-2xl font-bold text-gray-700">
-        School Registration
-      </div>
+        <div className="text-center p-2 text-2xl font-bold text-gray-700">
+          School Registration
+        </div>
         <div className="flex justify-center mb-6">
           <img src="/logo.jpeg" alt="Logo" className="w-24 h-24" />
         </div>
@@ -77,6 +77,7 @@ const Registration = () => {
               onChange={(e) => setName(e.target.value)}
               placeholder="name"
               className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-black dark:border-gray-600 text-black"
+              required
             />
           </div>
           <div className="mb-4">
@@ -90,6 +91,7 @@ const Registration = () => {
               onChange={(e) => setSchoolVillage(e.target.value)}
               placeholder="school Village"
               className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-black dark:border-gray-600 text-black"
+              required
             />
           </div>
           <div className="mb-4">
@@ -103,6 +105,7 @@ const Registration = () => {
               onChange={(e) => setDistrict(e.target.value)}
               placeholder="District"
               className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-black dark:border-gray-600 text-black"
+              required
             />
           </div>
           <div className="mb-4">
@@ -116,6 +119,7 @@ const Registration = () => {
               onChange={(e) => setTalukka(e.target.value)}
               placeholder="Talukka"
               className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-black dark:border-gray-600 text-black"
+              required
             />
           </div>
           <div className="mb-4">
@@ -129,6 +133,7 @@ const Registration = () => {
               onChange={(e) => setLocation(e.target.value)}
               placeholder="location"
               className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-black dark:border-gray-600 text-black"
+              required
             />
           </div>
           <div className="mb-4">
@@ -142,6 +147,7 @@ const Registration = () => {
               onChange={(e) => setSchoolId(e.target.value)}
               placeholder="scholl id"
               className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-black dark:border-gray-600 text-black"
+              required
             />
           </div>
           <div className="mb-6">
