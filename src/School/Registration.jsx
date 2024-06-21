@@ -57,8 +57,11 @@ const Registration = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-200 ">
+    <div className="flex items-center justify-center min-h-screen bg-gray-200 flex-col">
       <div className="w-full max-w-sm p-8 bg-white rounded-lg shadow-md dark:bg-gray-100">
+      <div className="text-center p-2 text-2xl font-bold text-gray-700">
+        School Registration
+      </div>
         <div className="flex justify-center mb-6">
           <img src="/logo.jpeg" alt="Logo" className="w-24 h-24" />
         </div>
@@ -146,7 +149,11 @@ const Registration = () => {
               <label htmlFor="password" className="block text-black">
                 Password
               </label>
-              <label htmlFor="" onClick={handleShowPassword} className="cursor-pointer">
+              <label
+                htmlFor=""
+                onClick={handleShowPassword}
+                className="cursor-pointer"
+              >
                 {show ? "Hide" : " Show"}
               </label>
             </span>

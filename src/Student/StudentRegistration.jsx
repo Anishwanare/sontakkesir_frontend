@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const StudentRegistration = () => {
   const [formData, setFormData] = useState({
@@ -62,15 +63,17 @@ const StudentRegistration = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-200 ">
-      <div className="w-full max-w-sm p-8 bg-white rounded-lg shadow-md dark:bg-gray-100">
-        <div className="">Student Registration</div>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-md">
+        <div className="text-center p-2 text-2xl font-bold text-gray-700">
+          Student Registration
+        </div>
         <div className="flex justify-center mb-6">
           <img src="/logo.jpeg" alt="Logo" className="w-24 h-24" />
         </div>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="firstName" className="block text-black">
+            <label htmlFor="firstName" className="block text-gray-700">
               First Name
             </label>
             <input
@@ -80,12 +83,12 @@ const StudentRegistration = () => {
               value={formData.firstName}
               onChange={handleChange}
               placeholder="First Name"
-              className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-black dark:border-gray-600 text-black"
+              className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 text-gray-700"
               required
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="middleName" className="block text-black">
+            <label htmlFor="middleName" className="block text-gray-700">
               Middle Name
             </label>
             <input
@@ -95,12 +98,12 @@ const StudentRegistration = () => {
               value={formData.middleName}
               onChange={handleChange}
               placeholder="Middle Name"
-              className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-black dark:border-gray-600 text-black"
+              className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 text-gray-700"
               required
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="lastName" className="block text-black">
+            <label htmlFor="lastName" className="block text-gray-700">
               Last Name
             </label>
             <input
@@ -110,12 +113,12 @@ const StudentRegistration = () => {
               value={formData.lastName}
               onChange={handleChange}
               placeholder="Last Name"
-              className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-black dark:border-gray-600 text-black"
+              className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 text-gray-700"
               required
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="phone" className="block text-black">
+            <label htmlFor="phone" className="block text-gray-700">
               Phone Number
             </label>
             <input
@@ -125,12 +128,12 @@ const StudentRegistration = () => {
               value={formData.phone}
               onChange={handleChange}
               placeholder="Phone Number"
-              className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-black dark:border-gray-600 text-black"
+              className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 text-gray-700"
               required
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="villageName" className="block text-black">
+            <label htmlFor="villageName" className="block text-gray-700">
               Village Name
             </label>
             <input
@@ -140,12 +143,12 @@ const StudentRegistration = () => {
               value={formData.villageName}
               onChange={handleChange}
               placeholder="Village Name"
-              className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-black dark:border-gray-600 text-black"
+              className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 text-gray-700"
               required
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="talukka" className="block text-black">
+            <label htmlFor="talukka" className="block text-gray-700">
               Talukka
             </label>
             <input
@@ -155,12 +158,12 @@ const StudentRegistration = () => {
               value={formData.talukka}
               onChange={handleChange}
               placeholder="Talukka"
-              className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-black dark:border-gray-600 text-black"
+              className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 text-gray-700"
               required
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="district" className="block text-black">
+            <label htmlFor="district" className="block text-gray-700">
               District
             </label>
             <input
@@ -170,19 +173,19 @@ const StudentRegistration = () => {
               value={formData.district}
               onChange={handleChange}
               placeholder="District"
-              className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-black dark:border-gray-600 text-black"
+              className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 text-gray-700"
               required
             />
           </div>
           <div className="mb-6">
             <span className="flex justify-between">
-              <label htmlFor="password" className="block text-black">
+              <label htmlFor="password" className="block text-gray-700">
                 Password
               </label>
               <label
                 htmlFor="password"
                 onClick={handleShowPassword}
-                className="cursor-pointer"
+                className="cursor-pointer text-indigo-500"
               >
                 {show ? "Hide" : "Show"}
               </label>
@@ -194,14 +197,14 @@ const StudentRegistration = () => {
               value={formData.password}
               onChange={handleChange}
               placeholder="Password"
-              className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-black dark:border-gray-600 text-black"
+              className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 text-gray-700"
               required
             />
           </div>
           <div className="flex justify-center">
             <button
               type="submit"
-              className="px-4 py-2 font-bold text-white bg-green-500 rounded-full hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+              className="px-4 py-2 font-bold text-white bg-indigo-500 rounded-full hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
               disabled={loading}
             >
               {loading ? "Loading..." : "Register"}

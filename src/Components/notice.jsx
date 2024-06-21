@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Notice = ({notice,desc}) => {
   return (
     <div
-      className="bg-blue-100 border-t-4 border-blue-500 rounded-b text-blue-900 px-4 py-3  top-0 sticky w-full z-50"
+      className="bg-blue-100 border-t-4 border-blue-500 rounded-b text-blue-900 px-4 py-3  top-0 sticky w-full z-50 flex justify-around items-center"
       role="alert"
     >
       <div className="flex">
@@ -20,6 +21,9 @@ const Notice = ({notice,desc}) => {
           <p className="font-bold">{notice}</p>
           <p className="text-sm">{desc}</p>
         </div>
+      </div>
+      <div className="hover:underline">
+        <Link to={"/"}>Go to Home</Link>
       </div>
     </div>
   );
