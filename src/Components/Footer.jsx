@@ -6,14 +6,14 @@ const Footer = () => {
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Privacy Policy Section */}
         <div className="flex justify-center items-center">
-          <a href="#" className="text-yellow-400 hover:text-yellow-300">
+          <a href="" className="text-yellow-400 hover:text-yellow-300">
             Privacy Policy
           </a>
         </div>
 
         {/* Logo Section */}
         <div className="flex justify-center items-center">
-          <img src="https://placehold.co/100x100" alt="Logo" className="h-16" />
+          <img src="/logo.jpeg" alt="Logo" className="h-16" />
         </div>
 
         {/* Copyright Section */}

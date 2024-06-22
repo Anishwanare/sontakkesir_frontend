@@ -44,7 +44,7 @@ const About = () => {
               we are dedicated to continuing to provide opportunities for
               students to learn, grow, and achieve their full potential.
             </p>
-            <button className="bg-yellow-500 text-white py-2 px-4 rounded-lg mt-4">
+            <button className="bg-yellow-500 hover:bg-yellow-400 text-white py-2 px-4 rounded-lg mt-4">
               Contact Us
             </button>
           </div>

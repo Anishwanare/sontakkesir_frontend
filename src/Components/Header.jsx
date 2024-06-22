@@ -26,7 +26,7 @@ const Header = () => {
     <header className="bg-white shadow relative ">
       <div className="container mx-auto px-4 py-6 flex justify-between items-center">
         <Link to={"/"}>
-          <img src="/logo.jpeg" alt="Logo" className="h-10" />
+          <img src="/logo.jpeg" alt="Logo" className="h-14" />
         </Link>
         <button onClick={handleMenu} className="lg:hidden">
           {menu ? <CloseIcon /> : <MenuIcon />}

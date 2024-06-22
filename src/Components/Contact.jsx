@@ -39,9 +39,12 @@ const Contact = () => {
       setMessage("");
     } catch (error) {
       console.error("Error:", error);
-      // toast.error("Failed to send message. Please try again later.");
+      toast.error("Failed to send message. Please try again later.");
     } finally {
       setLoading(false);
+      setName("");
+      setEmail("");
+      setMessage("");
     }
   };
   return (
