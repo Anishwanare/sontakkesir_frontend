@@ -42,7 +42,7 @@ const Header = () => {
             Home
           </Link>
           {/* About */}
-          <Menu as="div" className="relative inline-block text-left">
+          <Menu as="div" className="relative inline-block text-left" >
             <div>
               <MenuButton className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
                 About
@@ -74,14 +74,14 @@ const Header = () => {
                           "block px-4 py-2 text-sm"
                         )}
                       >
-                        Vision of Dnyanakur Foundation
+                        {/* Vision of Dnyanakur Foundation */}
                       </a>
                     )}
                   </MenuItem>
                   <MenuItem>
                     {({ active }) => (
                       <Link
-                        to="/home"
+                        to="/"
                         className={classNames(
                           active
                             ? "bg-gray-100 text-gray-900"
@@ -89,7 +89,7 @@ const Header = () => {
                           "block px-4 py-2 text-sm"
                         )}
                       >
-                        About Dnyanakur Foundation
+                        {/* About Dnyanakur Foundation */}
                       </Link>
                     )}
                   </MenuItem>
@@ -104,7 +104,7 @@ const Header = () => {
                           "block px-4 py-2 text-sm"
                         )}
                       >
-                        Values of Dnyanakur Foundation
+                        {/* Values of Dnyanakur Foundation */}
                       </a>
                     )}
                   </MenuItem>
@@ -167,7 +167,7 @@ const Header = () => {
                       </Link>
                     )}
                   </MenuItem>
-                  <MenuItem>
+                  <MenuItem >
                     {({ active }) => (
                       <a
                         href="#"
@@ -178,7 +178,7 @@ const Header = () => {
                           "block px-4 py-2 text-sm"
                         )}
                       >
-                        Co-Ordinator
+                        {/* Co-Ordinator */}
                       </a>
                     )}
                   </MenuItem>
@@ -220,14 +220,14 @@ const Header = () => {
                           "block px-4 py-2 text-sm"
                         )}
                       >
-                        Vision of Dnyanakur Foundation
+                        {/* Vision of Dnyanakur Foundation */}
                       </a>
                     )}
                   </MenuItem>
                   <MenuItem>
                     {({ active }) => (
                       <Link
-                        to="/home"
+                        to="/"
                         className={classNames(
                           active
                             ? "bg-gray-100 text-gray-900"
@@ -235,7 +235,7 @@ const Header = () => {
                           "block px-4 py-2 text-sm"
                         )}
                       >
-                        About Dnyanakur Foundation
+                        {/* About Dnyanakur Foundation */}
                       </Link>
                     )}
                   </MenuItem>
@@ -250,7 +250,7 @@ const Header = () => {
                           "block px-4 py-2 text-sm"
                         )}
                       >
-                        Values of Dnyanakur Foundation
+                        {/* Values of Dnyanakur Foundation */}
                       </a>
                     )}
                   </MenuItem>
@@ -292,14 +292,14 @@ const Header = () => {
                           "block px-4 py-2 text-sm"
                         )}
                       >
-                        Vision of Dnyanakur Foundation
+                        {/* Vision of Dnyanakur Foundation */}
                       </a>
                     )}
                   </MenuItem>
                   <MenuItem>
                     {({ active }) => (
                       <Link
-                        to="/home"
+                        to="/"
                         className={classNames(
                           active
                             ? "bg-gray-100 text-gray-900"
@@ -307,7 +307,7 @@ const Header = () => {
                           "block px-4 py-2 text-sm"
                         )}
                       >
-                        About Dnyanakur Foundation
+                        {/* About Dnyanakur Foundation */}
                       </Link>
                     )}
                   </MenuItem>
@@ -322,7 +322,7 @@ const Header = () => {
                           "block px-4 py-2 text-sm"
                         )}
                       >
-                        Values of Dnyanakur Foundation
+                        {/* Values of Dnyanakur Foundation */}
                       </a>
                     )}
                   </MenuItem>
@@ -364,14 +364,14 @@ const Header = () => {
                           "block px-4 py-2 text-sm"
                         )}
                       >
-                        Vision of Dnyanakur Foundation
+                        {/* Vision of Dnyanakur Foundation */}
                       </a>
                     )}
                   </MenuItem>
                   <MenuItem>
                     {({ active }) => (
                       <Link
-                        to="/home"
+                        to="/"
                         className={classNames(
                           active
                             ? "bg-gray-100 text-gray-900"
@@ -379,7 +379,7 @@ const Header = () => {
                           "block px-4 py-2 text-sm"
                         )}
                       >
-                        About Dnyanakur Foundation
+                        {/* About Dnyanakur Foundation */}
                       </Link>
                     )}
                   </MenuItem>
@@ -394,7 +394,7 @@ const Header = () => {
                           "block px-4 py-2 text-sm"
                         )}
                       >
-                        Values of Dnyanakur Foundation
+                        {/* Values of Dnyanakur Foundation */}
                       </a>
                     )}
                   </MenuItem>
