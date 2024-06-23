@@ -169,7 +169,7 @@ const StudentRegistration = () => {
               </option>
               {schoolData.map((school) => (
                 <option key={school.id} value={school.id}>
-                  {school.name}
+                  {`${school.name} - ${school.location}`}
                 </option>
               ))}
             </select>
