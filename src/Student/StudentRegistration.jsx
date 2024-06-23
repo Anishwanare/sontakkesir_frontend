@@ -76,7 +76,7 @@ const StudentRegistration = () => {
           setSchoolData(response?.data?.schools);
         }
       } catch (err) {
-        toast.error(err.response?.data?.message || "Something went wrong!");
+        console.log(err.response?.data?.message || "Error in fetching schools!");
       }
     };
     getSchools();
@@ -167,13 +167,18 @@ const StudentRegistration = () => {
               <option value="" disabled>
                 Select your school
               </option>
-              {schoolData.map((school) => (
-                <option key={school.id} value={school.id}>
-                  {`${school.name} - ${school.location}`}
-                </option>
-              ))}
+              {schoolData.length > 0 ? (
+                schoolData.map((school) => (
+                  <option key={school.id} value={school.id}>
+                    {`${school.name} - ${school.location}`}
+                  </option>
+                ))
+              ) : (
+                <option disabled>School data loading.......</option>
+              )}
             </select>
           </div>
+
           <div className="mb-4">
             <label htmlFor="villageName" className="block text-gray-700">
               Village Name
