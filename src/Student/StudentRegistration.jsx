@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const StudentRegistration = () => {
+  const [schoolData, setSchoolData] = useState([]);
   const [formData, setFormData] = useState({
     firstName: "",
     middleName: "",
@@ -14,6 +15,7 @@ const StudentRegistration = () => {
     talukka: "",
     district: "",
     role: "Student", // Default role
+    school: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -31,8 +33,8 @@ const StudentRegistration = () => {
   };
 
   const handleSubmit = async (e) => {
-    setLoading(true);
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_APP_API_BASE_URL}/api/v3/student/register`,
@@ -51,6 +53,7 @@ const StudentRegistration = () => {
           talukka: "",
           district: "",
           role: "Student",
+          school: "",
         });
       } else {
         toast.error(response.data.message);
@@ -60,7 +63,24 @@ const StudentRegistration = () => {
     } finally {
       setLoading(false);
     }
+    console.log(formData);
   };
+
+  useEffect(() => {
+    const getSchools = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_APP_API_BASE_URL}/api/v2/school/get-schools`
+        );
+        if (response?.data?.status) {
+          setSchoolData(response?.data?.schools);
+        }
+      } catch (err) {
+        toast.error(err.response?.data?.message || "Something went wrong!");
+      }
+    };
+    getSchools();
+  }, []);
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -133,6 +153,28 @@ const StudentRegistration = () => {
             />
           </div>
           <div className="mb-4">
+            <label htmlFor="school" className="block text-gray-700">
+              Select School
+            </label>
+            <select
+              id="school"
+              name="school"
+              value={formData.school}
+              onChange={handleChange}
+              className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 text-gray-700"
+              required
+            >
+              <option value="" disabled>
+                Select your school
+              </option>
+              {schoolData.map((school) => (
+                <option key={school.id} value={school.id}>
+                  {school.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="mb-4">
             <label htmlFor="villageName" className="block text-gray-700">
               Village Name
             </label>
@@ -183,7 +225,6 @@ const StudentRegistration = () => {
                 Password
               </label>
               <label
-                htmlFor="password"
                 onClick={handleShowPassword}
                 className="cursor-pointer text-indigo-500"
               >
