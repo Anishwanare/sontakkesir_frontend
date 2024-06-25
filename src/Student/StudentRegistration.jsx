@@ -4,6 +4,11 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const StudentRegistration = () => {
+
+  const capitalizeFirstLetter = (str) => {
+    return str.replace(/\b\w/g, (char) => char.toUpperCase());
+  };
+  
   const [schoolData, setSchoolData] = useState([]);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -69,14 +74,17 @@ const StudentRegistration = () => {
   useEffect(() => {
     const getSchools = async () => {
       try {
+        console.log("Gettingschool");
         const response = await axios.get(
           `${import.meta.env.VITE_APP_API_BASE_URL}/api/v2/school/get-schools`
         );
         if (response?.data?.status) {
           setSchoolData(response?.data?.schools);
         }
+        console.log("getSchoolData");
       } catch (err) {
         console.log(err.response?.data?.message || "Error in fetching schools!");
+        console.log("errorgetSchoolData");
       }
     };
     getSchools();
@@ -170,7 +178,9 @@ const StudentRegistration = () => {
               {schoolData.length > 0 ? (
                 schoolData.map((school) => (
                   <option key={school.id} value={school.id}>
-                    {`${school.name} - ${school.location}`}
+                    {capitalizeFirstLetter(
+                      `${school.name} - Village:${school.location}, Tq:${school.talukka}, Dist:${school.district}`
+                    )}
                   </option>
                 ))
               ) : (

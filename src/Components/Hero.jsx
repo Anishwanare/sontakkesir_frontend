@@ -6,11 +6,11 @@ const Hero = () => {
   return (
     <>
       <main className="container mx-auto px-4 py-12 text-center flex bg-zinc-100 md:flex-row flex-col-reverse">
-        <div className="flex justify-center mb-8 flex-col flex-1 ">
+        <div className="flex justify-center mb-8 flex-col flex-1 rounded-xl">
           <img
-            src="/hero.png"
+            src="/logo.jpeg"
             alt="Illustration"
-            className="h-96 object-contain"
+            className="h-96 object-contain bg-transparent rounded-xl"
           />
         </div>
         <div className="flex flex-col flex-1 backdrop align-middle justify-center gap-5">

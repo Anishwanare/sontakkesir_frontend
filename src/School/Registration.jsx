@@ -17,7 +17,6 @@ const Registration = () => {
     setShow((prev) => !prev);
   };
 
-  // Function to handle form submission
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
@@ -36,23 +35,23 @@ const Registration = () => {
         }
       );
 
-      console.log(response.data);
       if (response.data?.status) {
         toast.success(response.data?.message);
       } else {
         toast.error(response.data?.message);
       }
-
-      setName("");
-      setLocation("");
-      setSchoolId("");
-      setPassword("");
     } catch (error) {
-      // Handling any errors
       toast.error("Failed to register. Please try again later.");
       console.error("Error:", error);
     } finally {
       setLoading(false);
+      setName("");
+      setLocation("");
+      setSchoolId("");
+      setPassword("");
+      setSchoolVillage("");
+      setDistrict("");
+      setTalukka("");
     }
   };
 
@@ -63,7 +62,7 @@ const Registration = () => {
           School Registration
         </div>
         <div className="flex justify-center mb-6">
-          <img src="/logo.jpeg" alt="Logo" className="w-24 h-24" />
+          <img src="/logo.jpeg" alt="Logo" className="h-24" />
         </div>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -81,7 +80,7 @@ const Registration = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="name" className="block text-black">
+            <label htmlFor="village" className="block text-black">
               Village
             </label>
             <input
@@ -95,12 +94,12 @@ const Registration = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="name" className="block text-black">
+            <label htmlFor="district" className="block text-black">
               District
             </label>
             <input
               type="text"
-              id="District"
+              id="district"
               value={district}
               onChange={(e) => setDistrict(e.target.value)}
               placeholder="District"
@@ -109,12 +108,12 @@ const Registration = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="name" className="block text-black">
+            <label htmlFor="talukka" className="block text-black">
               Talukka
             </label>
             <input
               type="text"
-              id="Talukka"
+              id="talukka"
               value={talukka}
               onChange={(e) => setTalukka(e.target.value)}
               placeholder="Talukka"
@@ -145,7 +144,7 @@ const Registration = () => {
               id="school-id"
               value={schoolId}
               onChange={(e) => setSchoolId(e.target.value)}
-              placeholder="scholl id"
+              placeholder="school id"
               className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-black dark:border-gray-600 text-black"
               required
             />
@@ -156,11 +155,10 @@ const Registration = () => {
                 Password
               </label>
               <label
-                htmlFor=""
                 onClick={handleShowPassword}
                 className="cursor-pointer text-blue-500"
               >
-                {show ? "Hide" : " Show"}
+                {show ? "Hide" : "Show"}
               </label>
             </span>
             <input
@@ -170,12 +168,14 @@ const Registration = () => {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="password"
               className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-black dark:border-gray-600 text-black"
+              required
             />
           </div>
           <div className="flex justify-center">
             <button
               type="submit"
               className="px-4 py-2 font-bold text-white bg-green-500 rounded-full hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+              disabled={loading}
             >
               {loading ? "Loading..." : "Register"}
             </button>
