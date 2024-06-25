@@ -184,7 +184,7 @@ const StudentRegistration = () => {
                   </option>
                 ))
               ) : (
-                <option disabled>School data loading.......</option>
+                <p disabled>School data loading.......</p>
               )}
             </select>
           </div>
