@@ -13,6 +13,7 @@ import Registration from "./School/Registration";
 import StudentRegistration from "./Student/StudentRegistration";
 import Notice from "./Components/notice";
 import NotFound from "./Components/NotFound";
+import AdminDashboard from "./Admin/AdminDashboard";
 
 const App = () => {
   const location = useLocation();
@@ -33,6 +34,7 @@ const App = () => {
         <Route path="/student-register" element={<StudentRegistration />} />
         <Route path="/school-register" element={<Registration />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
       </Routes>
       <ToastContainer position="top-center" />
     </div>
