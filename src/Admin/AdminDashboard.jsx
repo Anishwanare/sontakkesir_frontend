@@ -31,7 +31,11 @@ const AdminDashboard = () => {
               </a>
             </li>
             <li className="flex items-center space-x-2">
-              <img alt="team-icon" src="/student.png" />
+              <img
+                alt="dashboard-icon"
+                src="/student.png"
+                className="mr-2 w-10 rounded-3xl"
+              />
               <a
                 onClick={() => setActiveSection("Students")}
                 href="#"
