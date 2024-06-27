@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SchoolData from "./components/SchoolData";
 import StudentData from "./components/StudentData";
+import MessagesData from "./components/MessagesData";
 
 const AdminDashboard = () => {
   const [activeSection, setActiveSection] = useState("Schools");
@@ -45,6 +46,15 @@ const AdminDashboard = () => {
               >
                 Students
               </a>
+              <a
+                onClick={() => setActiveSection("Messages")}
+                href="#"
+                className={`text-white font-semibold ${
+                  activeSection === "Messages" ? "underline" : ""
+                }`}
+              >
+                Messages
+              </a>
             </li>
           </ul>
         </nav>
@@ -84,6 +94,7 @@ const AdminDashboard = () => {
           <div className="border-2 border-dashed border-zinc-300 rounded-lg h-full p-4">
             {activeSection === "Schools" && <SchoolData />}
             {activeSection === "Students" && <StudentData />}
+            {activeSection === "Messages" && <MessagesData />}
           </div>
         </main>
       </div>
