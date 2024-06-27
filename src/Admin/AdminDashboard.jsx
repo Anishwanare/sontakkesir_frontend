@@ -31,7 +31,7 @@ const AdminDashboard = () => {
               </a>
             </li>
             <li className="flex items-center space-x-2">
-              <img alt="team-icon" src="https://placehold.co/24x24" />
+              <img alt="team-icon" src="/student.png" />
               <a
                 onClick={() => setActiveSection("Students")}
                 href="#"
