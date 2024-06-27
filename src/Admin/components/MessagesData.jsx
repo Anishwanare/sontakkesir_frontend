@@ -16,16 +16,36 @@ const MessagesData = () => {
         console.error("Error fetching Messages data:", error);
       }
     };
-    fetchMessages()
+    fetchMessages();
   }, []);
+
   return (
-    <div>{messageData.length > 0 ? messageData.map((message)=>(
-        <>
-        <div>{message.name}</div>
-        <div>{message.email}</div>
-        <div>{message.message}</div>
-        </>
-    )) : "Messages Not Found!!"}</div>
+    <div className="p-4">
+      {messageData.length > 0 ? (
+        <div className="overflow-x-auto">
+          <table className="min-w-full bg-white border border-gray-200">
+            <thead>
+              <tr>
+                <th className="py-2 px-4 border-b">Name</th>
+                <th className="py-2 px-4 border-b">Email</th>
+                <th className="py-2 px-4 border-b">Message</th>
+              </tr>
+            </thead>
+            <tbody>
+              {messageData.map((message, index) => (
+                <tr key={index} className="hover:bg-gray-100">
+                  <td className="py-2 px-4 border-b">{message.name}</td>
+                  <td className="py-2 px-4 border-b">{message.email}</td>
+                  <td className="py-2 px-4 border-b">{message.message}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <div className="text-center py-4">Messages Not Found!</div>
+      )}
+    </div>
   );
 };
 
