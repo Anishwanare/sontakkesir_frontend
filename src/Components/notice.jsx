@@ -25,6 +25,9 @@ const Notice = ({notice,desc}) => {
       <div className="hover:underline">
         <Link to={"/"}>Go to Home</Link>
       </div>
+      <div className="hover:underline">
+        <Link to={"//admin-dashboard"}>ADMIN</Link>
+      </div>
     </div>
   );
 };
