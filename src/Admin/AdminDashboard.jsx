@@ -22,14 +22,14 @@ const AdminDashboard = () => {
                 src="/school.png"
                 className="mr-2 w-10 rounded-3xl"
               />
-              <Link to={"/admin/school"}
+              <a href={"/admin-school"}
                 onClick={() => setActiveSection("Schools")}
                 className={`text-white font-semibold ${
                   activeSection === "Schools" ? "underline" : ""
                 }`}
               >
                 Schools
-              </Link>
+              </a>
             </li>
             <li className="flex items-center space-x-2">
               <img
@@ -37,14 +37,14 @@ const AdminDashboard = () => {
                 src="/student.png"
                 className="mr-2 w-10 rounded-3xl"
               />
-              <Link to={"/admin/student"}
+              <a href="/admin-student"
                 onClick={() => setActiveSection("Students")}
                 className={`text-white font-semibold ${
                   activeSection === "Students" ? "underline" : ""
                 }`}
               >
                 Students
-              </Link>
+              </a>
             </li>
             <li className="flex items-center space-x-2">
               <img
@@ -52,14 +52,14 @@ const AdminDashboard = () => {
                 src="/message.png"
                 className="mr-2 w-10 rounded-3xl"
               />
-              <Link to={"/admin/messages"}
+              <a href={"/admin-messages"}
                 onClick={() => setActiveSection("Messages")}
                 className={`text-white font-semibold ${
                   activeSection === "Messages" ? "underline" : ""
                 }`}
               >
                 Messages
-              </Link>
+              </a>
             </li>
           </ul>
         </nav>
