@@ -46,6 +46,13 @@ const AdminDashboard = () => {
               >
                 Students
               </a>
+            </li>
+            <li className="flex items-center space-x-2">
+              <img
+                alt="dashboard-icon"
+                src="/student.png"
+                className="mr-2 w-10 rounded-3xl"
+              />
               <a
                 onClick={() => setActiveSection("Messages")}
                 href="#"
