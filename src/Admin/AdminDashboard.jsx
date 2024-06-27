@@ -22,7 +22,7 @@ const AdminDashboard = () => {
                 src="/school.png"
                 className="mr-2 w-10 rounded-3xl"
               />
-              <a href={"/admin-school"}
+              <a href={"/"}
                 onClick={() => setActiveSection("Schools")}
                 className={`text-white font-semibold ${
                   activeSection === "Schools" ? "underline" : ""
@@ -37,7 +37,7 @@ const AdminDashboard = () => {
                 src="/student.png"
                 className="mr-2 w-10 rounded-3xl"
               />
-              <a href="/admin-student"
+              <a href="/"
                 onClick={() => setActiveSection("Students")}
                 className={`text-white font-semibold ${
                   activeSection === "Students" ? "underline" : ""
@@ -52,7 +52,7 @@ const AdminDashboard = () => {
                 src="/message.png"
                 className="mr-2 w-10 rounded-3xl"
               />
-              <a href={"/admin-messages"}
+              <a href={"/"}
                 onClick={() => setActiveSection("Messages")}
                 className={`text-white font-semibold ${
                   activeSection === "Messages" ? "underline" : ""
