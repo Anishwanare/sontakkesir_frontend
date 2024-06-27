@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SchoolData from "./components/SchoolData";
 import StudentData from "./components/StudentData";
 import MessagesData from "./components/MessagesData";
+import { Link } from "react-router-dom";
 
 const AdminDashboard = () => {
   const [activeSection, setActiveSection] = useState("Schools");
@@ -21,15 +22,14 @@ const AdminDashboard = () => {
                 src="/school.png"
                 className="mr-2 w-10 rounded-3xl"
               />
-              <a
+              <Link to={"/admin/school"}
                 onClick={() => setActiveSection("Schools")}
-                href="#"
                 className={`text-white font-semibold ${
                   activeSection === "Schools" ? "underline" : ""
                 }`}
               >
                 Schools
-              </a>
+              </Link>
             </li>
             <li className="flex items-center space-x-2">
               <img
@@ -37,15 +37,14 @@ const AdminDashboard = () => {
                 src="/student.png"
                 className="mr-2 w-10 rounded-3xl"
               />
-              <a
+              <Link to={"/admin/student"}
                 onClick={() => setActiveSection("Students")}
-                href="#"
                 className={`text-white font-semibold ${
                   activeSection === "Students" ? "underline" : ""
                 }`}
               >
                 Students
-              </a>
+              </Link>
             </li>
             <li className="flex items-center space-x-2">
               <img
@@ -53,15 +52,14 @@ const AdminDashboard = () => {
                 src="/message.png"
                 className="mr-2 w-10 rounded-3xl"
               />
-              <a
+              <Link to={"/admin/messages"}
                 onClick={() => setActiveSection("Messages")}
-                href="#"
                 className={`text-white font-semibold ${
                   activeSection === "Messages" ? "underline" : ""
                 }`}
               >
                 Messages
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
