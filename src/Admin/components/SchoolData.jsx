@@ -8,7 +8,7 @@ const SchoolData = () => {
     const fetchSchools = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:2050/api/v2/school/get-schools",
+          `${import.meta.env.VITE_APP_API_BASE_URL}/api/v2/school/get-schools`,
           {
             headers: {
               "Content-Type": "application/json",
