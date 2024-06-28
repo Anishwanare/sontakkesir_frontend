@@ -38,6 +38,7 @@ const StudentData = () => {
                 <th className="py-2 px-4 border-b">Last Name</th>
                 <th className="py-2 px-4 border-b">Phone</th>
                 <th className="py-2 px-4 border-b">School</th>
+                <th className="py-2 px-4 border-b">Class</th>
                 <th className="py-2 px-4 border-b">Talukka</th>
                 <th className="py-2 px-4 border-b">District</th>
                 <th className="py-2 px-4 border-b">Created At</th>
@@ -52,9 +53,12 @@ const StudentData = () => {
                   <td className="py-2 px-4 border-b">{student.lastName}</td>
                   <td className="py-2 px-4 border-b">{student.phone}</td>
                   <td className="py-2 px-4 border-b">{student.school}</td>
+                  <td className="py-2 px-4 border-b">{student.className}</td>
                   <td className="py-2 px-4 border-b">{student.talukka}</td>
                   <td className="py-2 px-4 border-b">{student.district}</td>
-                  <td className="py-2 px-4 border-b">{student.updatedAt}</td>
+                  <td className="py-2 px-4 border-b">
+                    {new Date(student.updatedAt).toLocaleDateString()}
+                  </td>
                 </tr>
               ))}
             </tbody>

@@ -4,11 +4,23 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const StudentRegistration = () => {
+  const classes = [
+    "Class - 1",
+    "Class - 2",
+    "Class - 3",
+    "Class - 4",
+    "Class - 5",
+    "Class - 6",
+    "Class - 7",
+    "Class - 8",
+    "Class - 9",
+    "Class - 10",
+  ];
 
   const capitalizeFirstLetter = (str) => {
     return str.replace(/\b\w/g, (char) => char.toUpperCase());
   };
-  
+
   const [schoolData, setSchoolData] = useState([]);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -21,6 +33,7 @@ const StudentRegistration = () => {
     district: "",
     role: "Student", // Default role
     school: "",
+    className: "", // Added class field
   });
 
   const [loading, setLoading] = useState(false);
@@ -59,6 +72,7 @@ const StudentRegistration = () => {
           district: "",
           role: "Student",
           school: "",
+          className: "", // Reset class field
         });
       } else {
         toast.error(response.data.message);
@@ -83,7 +97,9 @@ const StudentRegistration = () => {
         }
         console.log("getSchoolData");
       } catch (err) {
-        console.log(err.response?.data?.message || "Error in fetching schools!");
+        console.log(
+          err.response?.data?.message || "Error in fetching schools!"
+        );
         console.log("errorgetSchoolData");
       }
     };
@@ -176,19 +192,40 @@ const StudentRegistration = () => {
                 Select your school
               </option>
               {schoolData.length > 0 ? (
-                schoolData.map((school) => (
-                  <option key={school.id} value={school.id}>
+                schoolData.map((school,index) => (
+                  <option key={index} value={school.id}>
                     {capitalizeFirstLetter(
-                      `${school.name} - Village:${school.location}, Tq:${school.talukka}, Dist:${school.district}`
+                      `${school.name} , ${school.location}`
                     )}
                   </option>
                 ))
               ) : (
-                <p disabled>School data loading.......</p>
+                <option disabled>School data loading.......</option>
               )}
             </select>
           </div>
-
+          <div className="mb-4">
+            <label htmlFor="class" className="block text-gray-700">
+              Class
+            </label>
+            <select
+              id="className"
+              name="className"
+              value={formData.className}
+              onChange={handleChange}
+              className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 text-gray-700"
+              required
+            >
+              <option value="" disabled>
+                Select your class
+              </option>
+              {classes.map((className, index) => (
+                <option key={index} value={className}>
+                  {className}
+                </option>
+              ))}
+            </select>
+          </div>
           <div className="mb-4">
             <label htmlFor="villageName" className="block text-gray-700">
               Village Name
