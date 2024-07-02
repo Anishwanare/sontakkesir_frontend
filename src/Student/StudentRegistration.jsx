@@ -21,6 +21,7 @@ const StudentRegistration = () => {
     return str.replace(/\b\w/g, (char) => char.toUpperCase());
   };
 
+  const [coordinators, setCoordinators] = useState([]);
   const [schoolData, setSchoolData] = useState([]);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -34,6 +35,7 @@ const StudentRegistration = () => {
     role: "Student", // Default role
     school: "",
     className: "", // Added class field
+    coordinator: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -73,6 +75,7 @@ const StudentRegistration = () => {
           role: "Student",
           school: "",
           className: "", // Reset class field
+          coordinator: "",
         });
       } else {
         toast.error(response.data.message);
@@ -82,28 +85,39 @@ const StudentRegistration = () => {
     } finally {
       setLoading(false);
     }
-    console.log(formData);
   };
 
   useEffect(() => {
     const getSchools = async () => {
       try {
-        console.log("Gettingschool");
         const response = await axios.get(
           `${import.meta.env.VITE_APP_API_BASE_URL}/api/v2/school/get-schools`
         );
         if (response?.data?.status) {
           setSchoolData(response?.data?.schools);
         }
-        console.log("getSchoolData");
       } catch (err) {
-        console.log(
+        toast.error(
           err.response?.data?.message || "Error in fetching schools!"
         );
-        console.log("errorgetSchoolData");
       }
     };
     getSchools();
+  }, []);
+
+  useEffect(() => {
+    const fetchCoordinators = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_APP_API_BASE_URL}/api/v4/coordinator/fetch`
+        );
+        setCoordinators(response?.data?.coordinators || []);
+        console.log(response?.data?.coordinators);
+      } catch (error) {
+        console.error("Error fetching Coordinator data:", error);
+      }
+    };
+    fetchCoordinators();
   }, []);
 
   return (
@@ -192,10 +206,10 @@ const StudentRegistration = () => {
                 Select your school
               </option>
               {schoolData.length > 0 ? (
-                schoolData.map((school,index) => (
+                schoolData.map((school, index) => (
                   <option key={index} value={school.id}>
                     {capitalizeFirstLetter(
-                      `${school.name} , ${school.location}`
+                      `${school.name}, ${school.location}`
                     )}
                   </option>
                 ))
@@ -204,8 +218,8 @@ const StudentRegistration = () => {
               )}
             </select>
           </div>
-          <div className="mb-4">
-            <label htmlFor="class" className="block text-gray-700">
+          {formData.school && <div className="mb-4">
+            <label htmlFor="className" className="block text-gray-700">
               Class
             </label>
             <select
@@ -225,7 +239,31 @@ const StudentRegistration = () => {
                 </option>
               ))}
             </select>
-          </div>
+          </div>}
+          {formData.school&&<div className="mb-4">
+            <label htmlFor="coordinator" className="block text-gray-700">
+              Coordinator
+            </label>
+            <select
+              id="coordinator"
+              name="coordinator"
+              value={formData.coordinator}
+              onChange={handleChange}
+              className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 text-gray-700"
+              required
+            >
+              <option value="" disabled>
+                Select your Coordinator
+              </option>
+              {coordinators.map((coordinator) => (
+                <option key={coordinator._id} value={coordinator._id}>
+                  {capitalizeFirstLetter(
+                    `${coordinator.firstName} ${coordinator.lastName}`
+                  )}
+                </option>
+              ))}
+            </select>
+          </div>}
           <div className="mb-4">
             <label htmlFor="villageName" className="block text-gray-700">
               Village Name
