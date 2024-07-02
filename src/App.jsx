@@ -14,6 +14,7 @@ import StudentRegistration from "./Student/StudentRegistration";
 import Notice from "./Components/notice";
 import NotFound from "./Components/NotFound";
 import AdminDashboard from "./Admin/AdminDashboard";
+import CoordinatorRegistration from "./School/CoordinatorRegistration";
 
 const App = () => {
   const location = useLocation();
@@ -33,6 +34,7 @@ const App = () => {
         <Route path="/student-login" element={<Login />} />
         <Route path="/student-register" element={<StudentRegistration />} />
         <Route path="/school-register" element={<Registration />} />
+        <Route path="/coordinator" element={<CoordinatorRegistration />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
       </Routes>

@@ -3,6 +3,7 @@ import SchoolData from "./components/SchoolData";
 import StudentData from "./components/StudentData";
 import MessagesData from "./components/MessagesData";
 import { Link } from "react-router-dom";
+import CoordinateData from "./components/CoordinateData";
 
 const AdminDashboard = () => {
   const [activeSection, setActiveSection] = useState("Schools");
@@ -22,7 +23,8 @@ const AdminDashboard = () => {
                 src="/school.png"
                 className="mr-2 w-10 rounded-3xl"
               />
-              <a href={"#"}
+              <a
+                href={"#"}
                 onClick={() => setActiveSection("Schools")}
                 className={`text-white font-semibold ${
                   activeSection === "Schools" ? "underline" : ""
@@ -37,7 +39,8 @@ const AdminDashboard = () => {
                 src="/student.png"
                 className="mr-2 w-10 rounded-3xl"
               />
-              <a href="#"
+              <a
+                href="#"
                 onClick={() => setActiveSection("Students")}
                 className={`text-white font-semibold ${
                   activeSection === "Students" ? "underline" : ""
@@ -52,13 +55,30 @@ const AdminDashboard = () => {
                 src="/message.png"
                 className="mr-2 w-10 rounded-3xl"
               />
-              <a href={"#"}
+              <a
+                href={"#"}
                 onClick={() => setActiveSection("Messages")}
                 className={`text-white font-semibold ${
                   activeSection === "Messages" ? "underline" : ""
                 }`}
               >
                 Messages
+              </a>
+            </li>
+            <li className="flex items-center space-x-2">
+              <img
+                alt="dashboard-icon"
+                src="/coordinator.png"
+                className="mr-2 w-10 rounded-3xl"
+              />
+              <a
+                href={"#"}
+                onClick={() => setActiveSection("Coordinator")}
+                className={`text-white font-semibold ${
+                  activeSection === "Coordinator" ? "underline" : ""
+                }`}
+              >
+                Co-Ordinator
               </a>
             </li>
           </ul>
@@ -100,6 +120,7 @@ const AdminDashboard = () => {
             {activeSection === "Schools" && <SchoolData />}
             {activeSection === "Students" && <StudentData />}
             {activeSection === "Messages" && <MessagesData />}
+            {activeSection === "Coordinator" && <CoordinateData />}
           </div>
         </main>
       </div>
