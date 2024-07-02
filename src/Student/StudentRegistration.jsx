@@ -207,7 +207,7 @@ const StudentRegistration = () => {
               </option>
               {schoolData.length > 0 ? (
                 schoolData.map((school, index) => (
-                  <option key={index} value={school.id}>
+                  <option key={index} value={school._id}>
                     {capitalizeFirstLetter(
                       `${school.name}, ${school.location}`
                     )}
@@ -218,52 +218,56 @@ const StudentRegistration = () => {
               )}
             </select>
           </div>
-          {formData.school && <div className="mb-4">
-            <label htmlFor="className" className="block text-gray-700">
-              Class
-            </label>
-            <select
-              id="className"
-              name="className"
-              value={formData.className}
-              onChange={handleChange}
-              className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 text-gray-700"
-              required
-            >
-              <option value="" disabled>
-                Select your class
-              </option>
-              {classes.map((className, index) => (
-                <option key={index} value={className}>
-                  {className}
+          {formData.school && (
+            <div className="mb-4">
+              <label htmlFor="className" className="block text-gray-700">
+                Class
+              </label>
+              <select
+                id="className"
+                name="className"
+                value={formData.className}
+                onChange={handleChange}
+                className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 text-gray-700"
+                required
+              >
+                <option value="" disabled>
+                  Select your class
                 </option>
-              ))}
-            </select>
-          </div>}
-          {formData.school&&<div className="mb-4">
-            <label htmlFor="coordinator" className="block text-gray-700">
-              Coordinator
-            </label>
-            <select
-              id="coordinator"
-              name="coordinator"
-              value={formData.coordinator}
-              onChange={handleChange}
-              className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 text-gray-700"
-              required
-            >
-              <option value="" disabled>
-                Select your Coordinator
-              </option>
-              {coordinators.map((coordinator) => (
-                <option key={coordinator._id} value={coordinator._id}>
-                  {capitalizeFirstLetter(
-                    `${coordinator.firstName} ${coordinator.lastName}`
-                  )}
+                {classes.map((className, index) => (
+                  <option key={index} value={className}>
+                    {className}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+          {formData.className && (
+            <div className="mb-4">
+              <label htmlFor="coordinator" className="block text-gray-700">
+                Coordinator
+              </label>
+              <select
+                id="coordinator"
+                name="coordinator"
+                value={formData.coordinator}
+                onChange={handleChange}
+                className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 text-gray-700"
+                required
+              >
+                <option value="" disabled>
+                  Select your Coordinator
                 </option>
-              ))}
-            </select>
-          </div>}
+                {coordinators.map((coordinator) => (
+                  <option key={coordinator._id} value={coordinator._id}>
+                    {capitalizeFirstLetter(
+                      `${coordinator.firstName} ${coordinator.lastName}`
+                    )}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
           <div className="mb-4">
             <label htmlFor="villageName" className="block text-gray-700">
               Village Name
@@ -281,7 +285,7 @@ const StudentRegistration = () => {
           </div>
           <div className="mb-4">
             <label htmlFor="talukka" className="block text-gray-700">
-              Talukka
+              Taluka
             </label>
             <input
               type="text"
@@ -289,7 +293,7 @@ const StudentRegistration = () => {
               name="talukka"
               value={formData.talukka}
               onChange={handleChange}
-              placeholder="Talukka"
+              placeholder="Taluka"
               className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 text-gray-700"
               required
             />
@@ -309,36 +313,37 @@ const StudentRegistration = () => {
               required
             />
           </div>
-          <div className="mb-6">
-            <span className="flex justify-between">
-              <label htmlFor="password" className="block text-gray-700">
-                Password
-              </label>
-              <label
+          <div className="mb-4 relative">
+            <label htmlFor="password" className="block text-gray-700">
+              Password
+            </label>
+            <div className="flex">
+              <input
+                type={show ? "text" : "password"}
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="Password"
+                className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 text-gray-700"
+                required
+              />
+              <button
+                type="button"
+                className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5"
                 onClick={handleShowPassword}
-                className="cursor-pointer text-indigo-500"
               >
                 {show ? "Hide" : "Show"}
-              </label>
-            </span>
-            <input
-              type={show ? "text" : "password"}
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="Password"
-              className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 text-gray-700"
-              required
-            />
+              </button>
+            </div>
           </div>
           <div className="flex justify-center">
             <button
               type="submit"
-              className="px-4 py-2 font-bold text-white bg-indigo-500 rounded-full hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
+              className="px-4 py-2 font-semibold text-white bg-blue-500 hover:bg-blue-700 rounded-md"
               disabled={loading}
             >
-              {loading ? "Loading..." : "Register"}
+              {loading ? "Registering..." : "Register"}
             </button>
           </div>
         </form>
