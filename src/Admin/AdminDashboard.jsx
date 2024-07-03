@@ -1,12 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SchoolData from "./components/SchoolData";
 import StudentData from "./components/StudentData";
 import MessagesData from "./components/MessagesData";
-import { Link } from "react-router-dom";
 import CoordinateData from "./components/CoordinateData";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 const AdminDashboard = () => {
   const [activeSection, setActiveSection] = useState("Schools");
+  const [admin, setAdmin] = useState(null);
+
+  useEffect(() => {
+    const fetchAdminInfo = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:2050/api/v5/admin/fetch",
+          {
+            withCredentials: true,
+          }
+        );
+        if (response?.data?.status) {
+          setAdmin(response?.data.admin[0]);
+          console.log(response.data.admin);
+        }
+      } catch (error) {
+        console.error("Error fetching admin info:", error);
+      }
+    };
+    fetchAdminInfo();
+  }, []);
 
   return (
     <div className="flex h-screen">
@@ -17,70 +39,28 @@ const AdminDashboard = () => {
         </div>
         <nav className="flex-1">
           <ul className="space-y-4">
-            <li className="flex items-center space-x-2">
-              <img
-                alt="dashboard-icon"
-                src="/school.png"
-                className="mr-2 w-10 rounded-3xl"
-              />
-              <a
-                href={"#"}
-                onClick={() => setActiveSection("Schools")}
-                className={`text-white font-semibold ${
-                  activeSection === "Schools" ? "underline" : ""
-                }`}
-              >
-                Schools
-              </a>
-            </li>
-            <li className="flex items-center space-x-2">
-              <img
-                alt="dashboard-icon"
-                src="/student.png"
-                className="mr-2 w-10 rounded-3xl"
-              />
-              <a
-                href="#"
-                onClick={() => setActiveSection("Students")}
-                className={`text-white font-semibold ${
-                  activeSection === "Students" ? "underline" : ""
-                }`}
-              >
-                Students
-              </a>
-            </li>
-            <li className="flex items-center space-x-2">
-              <img
-                alt="dashboard-icon"
-                src="/message.png"
-                className="mr-2 w-10 rounded-3xl"
-              />
-              <a
-                href={"#"}
-                onClick={() => setActiveSection("Messages")}
-                className={`text-white font-semibold ${
-                  activeSection === "Messages" ? "underline" : ""
-                }`}
-              >
-                Messages
-              </a>
-            </li>
-            <li className="flex items-center space-x-2">
-              <img
-                alt="dashboard-icon"
-                src="/coordinator.png"
-                className="mr-2 w-10 rounded-3xl"
-              />
-              <a
-                href={"#"}
-                onClick={() => setActiveSection("Coordinator")}
-                className={`text-white font-semibold ${
-                  activeSection === "Coordinator" ? "underline" : ""
-                }`}
-              >
-                Co-Ordinator
-              </a>
-            </li>
+            {[
+              { name: "Schools", icon: "/school.png" },
+              { name: "Students", icon: "/student.png" },
+              { name: "Messages", icon: "/message.png" },
+              { name: "Coordinator", icon: "/coordinator.png" },
+            ].map((section) => (
+              <li key={section.name} className="flex items-center space-x-2">
+                <img
+                  alt={`${section.name.toLowerCase()}-icon`}
+                  src={section.icon}
+                  className="mr-2 w-10 rounded-3xl"
+                />
+                <button
+                  onClick={() => setActiveSection(section.name)}
+                  className={`text-white font-semibold ${
+                    activeSection === section.name ? "underline" : ""
+                  }`}
+                >
+                  {section.name}
+                </button>
+              </li>
+            ))}
           </ul>
         </nav>
         <div className="mt-auto">
@@ -93,6 +73,7 @@ const AdminDashboard = () => {
 
       <div className="flex-1 flex flex-col">
         <header className="flex items-center justify-between p-4 border-b border-zinc-200">
+          {/* search */}
           <div className="flex items-center space-x-2">
             <img alt="search-icon" src="https://placehold.co/24x24" />
             <input
@@ -102,16 +83,20 @@ const AdminDashboard = () => {
             />
           </div>
           <div className="flex items-center space-x-4">
-            <img alt="notification-icon" src="https://placehold.co/24x24" />
+            {/* <img alt="notification-icon" src="https://placehold.co/24x24" /> */}
             <div className="flex items-center space-x-2">
-              <img
+              {/* <img
                 alt="profile-picture"
                 src="https://placehold.co/32x32"
                 className="rounded-full"
-              />
-              <span>Dnyaneshwar Sontakke</span>
-              <img alt="dropdown-icon" src="https://placehold.co/24x24" />
+              /> */}
+              <span>Welcome : </span>
+              <span>{admin ? admin.name : "Loading..."}</span>
+              {/* <img alt="dropdown-icon" src="https://placehold.co/24x24" /> */}
             </div>
+          </div>
+          <div className="">
+            <button type="button" onClick={()=>{localStorage.removeItem("AdminToken")}}>Logout</button>
           </div>
         </header>
 
