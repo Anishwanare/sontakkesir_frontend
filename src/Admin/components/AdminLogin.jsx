@@ -15,7 +15,7 @@ const AdminLogin = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:2050/api/v5/admin/login",
+        `${import.meta.env.VITE_APP_API_BASE_URL}/api/v5/admin/login`,
         {
           email,
           password,
@@ -78,7 +78,7 @@ const AdminLogin = () => {
             type="submit"
             className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
           >
-            Login
+            {loading ? 'loading....':'Login'}
           </button>
         </form>
       </div>
