@@ -6,7 +6,7 @@ const Guide = () => {
       <div className="flex flex-col items-center space-y-4 py-20 px-10">
         <div className="text-center">
           <h2 className="text-3xl font-bold  inline-block px-2 py-1">
-            How to Guide
+            Achievements
           </h2>
           <hr className="border-t-2 border-yellow-700 mt-1 w-16 mx-auto" />
         </div>
