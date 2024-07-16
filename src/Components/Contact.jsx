@@ -108,16 +108,16 @@ const Contact = () => {
           <div className="bg-zinc-100 p-4 rounded-md">
             {/* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29754.34105181647!2d77.32801415189131!3d21.220241486001942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd6fa96fadb1903%3A0x5690a371909f73dc!2sPathrot%2C%20Maharashtra%20444808%2C%20India!5e0!3m2!1sen!2sus!4v1718096205938!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> */}
             <p className="mt-4">
-              B5 Karan Court Ahmednagar - 414001 Maharashtra
+              At post Pathrot Tq Achalpur Dist Amravati 444808
             </p>
-            <p>Whatsapp us +91-9130093832, +91-9130093830</p>
+            <p>Whatsapp us +91 96231 61432</p>
             <p>
               Facebook:{" "}
               <a
-                href="https://www.facebook.com/manthanwelfarefoundation"
+                href=""
                 className="text-blue-500 hover:underline text-wrap"
               >
-                anish
+                
               </a>
             </p>
           </div>

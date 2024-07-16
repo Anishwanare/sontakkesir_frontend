@@ -6,7 +6,7 @@ const About = () => {
       <div className=" p-6 py-20 bg-zinc-100 md:px-[200px]">
         <div className="text-center mb-12">
           <h1 className="text-3xl font-bold">About</h1>
-          <h2 className="text-xl text-zinc-600">Manthan Welfare Foundation</h2>
+          <h2 className="text-xl text-zinc-600">Dnyanankur Welfare Foundation</h2>
         </div>
         <div className="flex flex-col md:flex-row items-start">
           <div className="md:w-2/3 pr-6">
@@ -14,35 +14,37 @@ const About = () => {
               Developing With a Passion While Exploring The World.
             </h3>
             <p className="mb-4">
-              At Manthan Welfare Foundation, we believe that education is the
-              key to unlocking the potential of every individual and empowering
-              them to create a better future for themselves and their
-              communities. Our mission is to provide opportunities for students
-              to develop their knowledge, skills, and character, and to inspire
-              them to become lifelong learners and responsible citizens.
+              At Dyanankur Prakashan, we believe that education paves the way
+              for success. We advocate for every individual to engage in
+              high-quality learning to unleash their full potential. Education
+              has the transformative power to significantly impact the future of
+              our nation. Our mission is to elevate education standards to new
+              heights, enhancing critical thinking, skills, performance, and
+              problem-solving abilities. This prepares individuals to
+              continually grow and become responsible global citizens.
             </p>
             <p className="mb-4">
-              Our vision is to create a world where every student has access to
-              high-quality education and the resources they need to succeed,
-              regardless of their background or circumstances. We believe that
-              education is a powerful tool for social change, and that by
-              investing in the next generation, we can build a more equitable
-              and just society for all.
+              Our vision is to create a world where everyone has access to
+              education and can achieve their dreams. In today’s world, superior
+              education is crucial. With enthusiasm, spirit, competitiveness,
+              ambition, and determination for the next generation, we aim to
+              build a resilient and innovative society.
             </p>
             <p className="mb-4">
-              At the heart of our organization are our core values: excellence,
-              integrity, compassion, and diversity. We strive for excellence in
-              everything we do, from the design and delivery of our exams to the
-              support and resources we provide to students and educators. We
-              believe in acting with integrity and treating everyone with
-              respect and fairness. We are committed to fostering a culture of
-              compassion and empathy, and to creating an inclusive and diverse
-              community where everyone can thrive.
+              At our organization, we meticulously craft examination papers for
+              students of every grade, ensuring they are of the highest quality
+              with accurate, comprehensive content across diverse subjects. We
+              provide educators with support and resources to effectively use
+              our materials for student assessment and learning. We are
+              dedicated to continuously improving and advancing our examination
+              practices, designed to be accessible to students of varied
+              learning abilities and backgrounds.
             </p>
             <p className="mb-4">
-              We are proud of the work we do at Manthan Welfare Foundation, and
-              we are dedicated to continuing to provide opportunities for
-              students to learn, grow, and achieve their full potential.
+              We are committed to fostering an inclusive learning environment
+              that respects diverse cultures. At Dyanankur Prakashan, we take
+              pride in our work and are devoted to creating environments where
+              students can learn, progress, and achieve their utmost potential.
             </p>
             <button className="bg-yellow-500 hover:bg-yellow-400 text-white py-2 px-4 rounded-lg mt-4">
               Contact Us

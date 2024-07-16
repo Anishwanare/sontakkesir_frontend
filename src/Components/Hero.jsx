@@ -15,10 +15,10 @@ const Hero = () => {
         </div>
         <div className="flex flex-col flex-1 backdrop align-middle justify-center gap-5">
           <h2 className="text-zinc-700 dark:text-zinc-600 text-lg">
-            Govt. Authorised
+            {/* Govt. Authorised */}
           </h2>
           <h1 className="text-orange-600 dark:text-orange-400 text-4xl font-bold mb-4">
-            DNYANANKUR STATE LEVEL GENERAL KNOWLEDGE EXAMINATION
+            Pursuing Our Dreams To Create A Better Tomorrow !
           </h1>
           <p className="text-zinc-700 dark:text-zinc-600 text-lg mb-2">
             Std 1st to 8th
@@ -28,7 +28,7 @@ const Hero = () => {
           </p>
         </div>
       </main>
-      <section className="bg-zinc-100 py-20 md:px-[100px] px-0">
+      {/* <section className="bg-zinc-100 py-20 md:px-[100px] px-0">
         <div className="container mx-auto px-4 text-center space-y-4">
           <div className="space-x-4">
             <a
@@ -98,7 +98,7 @@ const Hero = () => {
             #Images मंथन पारितोषिक वितरण समारंभ – २०१९
           </p>
         </div>
-      </section>
+      </section> */}
     </>
   );
 };
