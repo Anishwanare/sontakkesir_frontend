@@ -205,8 +205,8 @@ const StudentRegistration = () => {
                 Select your school
               </option>
               {schoolData.length > 0 ? (
-                schoolData.map((school, index) => (
-                  <option key={index} value={school.id}>
+                schoolData.map((school) => (
+                  <option key={school._id} value={school._id}>
                     {capitalizeFirstLetter(
                       `${school.name}, ${school.location}`
                     )}
@@ -254,9 +254,9 @@ const StudentRegistration = () => {
               <option value="" disabled>
                 Select your Coordinator
               </option>
-              {coordinators.map((coordinate, index) => (
-                <option key={index} value={coordinate}>
-                  {coordinate}
+              {coordinators.map((coordinator) => (
+                <option key={coordinator._id} value={coordinator._id}>
+                  {coordinator.firstName} {coordinator.lastName}
                 </option>
               ))}
             </select>
@@ -278,7 +278,7 @@ const StudentRegistration = () => {
           </div>
           <div className="mb-4">
             <label htmlFor="talukka" className="block text-gray-700">
-              Talukka
+              Taluka
             </label>
             <input
               type="text"
@@ -286,7 +286,7 @@ const StudentRegistration = () => {
               name="talukka"
               value={formData.talukka}
               onChange={handleChange}
-              placeholder="Talukka"
+              placeholder="Taluka"
               className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 text-gray-700"
               required
             />
@@ -306,36 +306,53 @@ const StudentRegistration = () => {
               required
             />
           </div>
-          <div className="mb-6">
-            <span className="flex justify-between">
-              <label htmlFor="password" className="block text-gray-700">
-                Password
-              </label>
-              <label
+          <div className="mb-4">
+            <label htmlFor="password" className="block text-gray-700">
+              Password
+            </label>
+            <div className="relative">
+              <input
+                type={show ? "text" : "password"}
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="Password"
+                className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 text-gray-700"
+                required
+              />
+              <button
+                type="button"
                 onClick={handleShowPassword}
-                className="cursor-pointer text-indigo-500"
+                className="absolute right-2 top-2 text-gray-700"
               >
                 {show ? "Hide" : "Show"}
-              </label>
-            </span>
+              </button>
+            </div>
+          </div>
+          <div className="mb-6">
+            <label htmlFor="role" className="block text-gray-700">
+              Role
+            </label>
             <input
-              type={show ? "text" : "password"}
-              id="password"
-              name="password"
-              value={formData.password}
+              type="text"
+              id="role"
+              name="role"
+              value={formData.role}
               onChange={handleChange}
-              placeholder="Password"
+              placeholder="Role"
               className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 text-gray-700"
+              disabled
               required
             />
           </div>
-          <div className="flex justify-center">
+          <div className="mb-6">
             <button
               type="submit"
-              className="px-4 py-2 font-bold text-white bg-indigo-500 rounded-full hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
+              className="w-full bg-blue-500 text-white py-2 rounded-md shadow-md hover:bg-blue-600 focus:ring focus:ring-blue-300 disabled:opacity-50"
               disabled={loading}
             >
-              {loading ? "Loading..." : "Register"}
+              {loading ? "Registering..." : "Register"}
             </button>
           </div>
         </form>
