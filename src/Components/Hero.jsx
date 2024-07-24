@@ -21,10 +21,10 @@ const Hero = () => {
             Pursuing Our Dreams To Create A Better Tomorrow !
           </h1>
           <p className="text-zinc-700 dark:text-zinc-600 text-lg mb-2">
-            Std 1st to 8th
+            Std 1st to 7th
           </p>
           <p className="text-zinc-500 dark:text-zinc-600">
-            (Marathi, English, Semi – English)
+            (Marathi, English, SemiEnglish)
           </p>
         </div>
       </main>

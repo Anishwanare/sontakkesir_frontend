@@ -162,7 +162,7 @@ const CoordinatorRegistration = () => {
         </div>
 
         {/* School */}
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <label className="block text-sm font-semibold mb-1" htmlFor="school">
             School
           </label>
@@ -187,7 +187,7 @@ const CoordinatorRegistration = () => {
               <option disabled>School data loading...</option>
             )}
           </select>
-        </div>
+        </div> */}
 
         {/* District */}
         <div className="mb-4">

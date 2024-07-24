@@ -114,10 +114,10 @@ const Contact = () => {
             <p>
               Facebook:{" "}
               <a
-                href=""
+                href="https://www.facebook.com/profile.php?id=61555652351984&mibextid=ZbWKwL"
                 className="text-blue-500 hover:underline text-wrap"
               >
-                
+                Visit to Facebook
               </a>
             </p>
           </div>
