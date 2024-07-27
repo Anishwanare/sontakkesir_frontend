@@ -16,10 +16,11 @@ const StudentData = () => {
           }
         );
 
+        // Log the response to check the structure of the fetched data
         console.log(response?.data?.getStudent);
         setStudentData(response?.data?.getStudent);
       } catch (error) {
-        console.error("Error fetching school data:", error);
+        console.error("Error fetching student data:", error);
       }
     };
     fetchStudents();
@@ -57,7 +58,7 @@ const StudentData = () => {
                   <td className="py-2 px-4 border-b">{student.talukka}</td>
                   <td className="py-2 px-4 border-b">{student.district}</td>
                   <td className="py-2 px-4 border-b">
-                    {new Date(student.updatedAt).toLocaleDateString()}
+                    {new Date(student.createdAt).toLocaleDateString()}
                   </td>
                 </tr>
               ))}
