@@ -17,7 +17,7 @@ const StudentData = () => {
         );
 
         // Log the response to check the structure of the fetched data
-        console.log(response?.data?.getStudent);
+        // console.log(response?.data?.getStudent);
         setStudentData(response?.data?.getStudent);
       } catch (error) {
         console.error("Error fetching student data:", error);
@@ -39,6 +39,7 @@ const StudentData = () => {
                 <th className="py-2 px-4 border-b">Last Name</th>
                 <th className="py-2 px-4 border-b">Phone</th>
                 <th className="py-2 px-4 border-b">School</th>
+                <th className="py-2 px-4 border-b">Co-oridnator</th>
                 <th className="py-2 px-4 border-b">Class</th>
                 <th className="py-2 px-4 border-b">Talukka</th>
                 <th className="py-2 px-4 border-b">District</th>
@@ -48,7 +49,7 @@ const StudentData = () => {
             <tbody>
               {studentData.map((student, index) => (
                 <tr key={index} className="hover:bg-gray-100">
-                  <td className="py-2 px-4 border-b">{index + 1} )</td>
+                  <td className="py-2 px-4 border-b">{index + 1})</td>
                   <td className="py-2 px-4 border-b">{student.firstName}</td>
                   <td className="py-2 px-4 border-b">{student.middleName}</td>
                   <td className="py-2 px-4 border-b">{student.lastName}</td>

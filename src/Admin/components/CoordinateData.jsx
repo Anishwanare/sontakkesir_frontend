@@ -10,7 +10,7 @@ const CoordinateData = () => {
         const response = await axios.get(
           `${import.meta.env.VITE_APP_API_BASE_URL}/api/v4/coordinator/fetch`
         );
-        console.log(response?.data?.coordinators);
+        // console.log(response?.data?.coordinators);
         setCoordinators(response?.data?.coordinators || []);
       } catch (error) {
         console.error("Error fetching Coordinator data:", error);
@@ -30,20 +30,20 @@ const CoordinateData = () => {
                 <th className="py-2 px-4 border-b">Name</th>
                 <th className="py-2 px-4 border-b">Email</th>
                 <th className="py-2 px-4 border-b">Phone</th>
-                <th className="py-2 px-4 border-b">School</th>
+                {/* <th className="py-2 px-4 border-b">School</th> */}
                 {/* Add additional headers as needed */}
               </tr>
             </thead>
             <tbody className="text-center">
               {coordinators.map((coordinator, index) => (
                 <tr key={index} className="hover:bg-gray-100">
-                  <td className="py-2 px-4 border-b">{index + 1}</td>
+                  <td className="py-2 px-4 border-b">{index + 1})</td>
                   <td className="py-2 px-4 border-b">
                     {coordinator.firstName} {coordinator.lastName}
                   </td>
                   <td className="py-2 px-4 border-b">{coordinator.email}</td>
                   <td className="py-2 px-4 border-b">{coordinator.phone}</td>
-                  <td className="py-2 px-4 border-b">{coordinator.school}</td>
+                  {/* <td className="py-2 px-4 border-b">{coordinator.school}</td> */}
                   {/* Add additional columns as needed */}
                 </tr>
               ))}

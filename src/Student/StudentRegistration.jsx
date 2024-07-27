@@ -85,7 +85,7 @@ const StudentRegistration = () => {
     } finally {
       setLoading(false);
     }
-    console.log(formData.school);
+    // console.log(formData.school);
   };
 
   useEffect(() => {
@@ -209,7 +209,7 @@ const StudentRegistration = () => {
                 schoolData.map((school) => (
                   <option key={school._id} value={school.id}>
                     {capitalizeFirstLetter(
-                      `${school.name}, ${school.village}`
+                      `${school.name}, ${school.schoolVillage}`
                     )}
                   </option>
                 ))

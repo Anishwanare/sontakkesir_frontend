@@ -9,6 +9,7 @@ import axios from "axios";
 const AdminDashboard = () => {
   const [activeSection, setActiveSection] = useState("Schools");
   const [admin, setAdmin] = useState(null);
+  // anish
 
   useEffect(() => {
     const fetchAdminInfo = async () => {
@@ -21,7 +22,7 @@ const AdminDashboard = () => {
         );
         if (response?.data?.status) {
           setAdmin(response?.data.admin[0]);
-          console.log(response.data.admin);
+          // console.log(response?.data?.admin);
         }
       } catch (error) {
         console.error("Error fetching admin info:", error);

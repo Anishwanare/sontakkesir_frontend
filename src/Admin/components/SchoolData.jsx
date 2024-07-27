@@ -16,7 +16,7 @@ const SchoolData = () => {
           }
         );
 
-        console.log(response?.data?.schools);
+        // console.log(response?.data?.schools);
         setSchoolData(response?.data?.schools);
       } catch (error) {
         console.error("Error fetching school data:", error);
@@ -35,23 +35,23 @@ const SchoolData = () => {
                 <th className="py-2 px-4 border-b">Sr No.</th>
                 <th className="py-2 px-4 border-b">Name</th>
                 <th className="py-2 px-4 border-b">District</th>
-                <th className="py-2 px-4 border-b">Location</th>
                 <th className="py-2 px-4 border-b">Village</th>
-                <th className="py-2 px-4 border-b">School ID</th>
                 <th className="py-2 px-4 border-b">Talukka</th>
+                <th className="py-2 px-4 border-b">School ID</th>
+                <th className="py-2 px-4 border-b">Co-ordinator</th>
               </tr>
             </thead>
             <tbody>
-              {schoolData.map((school,index) => (
+              {schoolData.map((school, index) => (
                 <tr key={index} className="hover:bg-gray-100">
 
-                  <td className="py-2 px-4 border-b">{index +1} )</td>
+                  <td className="py-2 px-4 border-b">{index + 1} )</td>
                   <td className="py-2 px-4 border-b">{school.name}</td>
                   <td className="py-2 px-4 border-b">{school.district}</td>
-                  <td className="py-2 px-4 border-b">{school.location}</td>
                   <td className="py-2 px-4 border-b">{school.schoolVillage}</td>
-                  <td className="py-2 px-4 border-b">{school.schoolId}</td>
                   <td className="py-2 px-4 border-b">{school.talukka}</td>
+                  <td className="py-2 px-4 border-b">{school.schoolId}</td>
+                  <td className="py-2 px-4 border-b">{school.coordinator}</td>
                 </tr>
               ))}
             </tbody>

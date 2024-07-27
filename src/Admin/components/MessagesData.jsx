@@ -10,7 +10,7 @@ const MessagesData = () => {
         const response = await axios.get(
           `${import.meta.env.VITE_APP_API_BASE_URL}/api/v1/message/get`
         );
-        console.log(response?.data?.getAllMessagesResponse);
+        // console.log(response?.data?.getAllMessagesResponse);
         setMessageData(response?.data?.getAllMessagesResponse);
       } catch (error) {
         console.error("Error fetching Messages data:", error);
