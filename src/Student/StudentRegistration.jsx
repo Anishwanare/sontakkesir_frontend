@@ -30,7 +30,7 @@ const StudentRegistration = () => {
     password: "",
     phone: "",
     villageName: "",
-    talukka: "",
+    talukka: "", 
     district: "",
     role: "Student", // Default role
     school: "",
@@ -61,7 +61,7 @@ const StudentRegistration = () => {
         formData
       );
 
-      if (response.data.status) {
+      if (response?.data?.status) {
         toast.success("Student registered successfully!");
         setFormData({
           firstName: "",
@@ -70,7 +70,7 @@ const StudentRegistration = () => {
           password: "",
           phone: "",
           villageName: "",
-          talukka: "",
+          talukka: "", 
           district: "",
           role: "Student",
           school: "",
@@ -85,6 +85,7 @@ const StudentRegistration = () => {
     } finally {
       setLoading(false);
     }
+    console.log(formData.school);
   };
 
   useEffect(() => {
@@ -113,7 +114,7 @@ const StudentRegistration = () => {
         );
         setCoordinators(response?.data?.coordinators || []);
       } catch (error) {
-        console.error("Error fetching Coordinator data:", error);
+        toast.error("Error fetching Coordinator data!");
       }
     };
     fetchCoordinators();
@@ -206,9 +207,9 @@ const StudentRegistration = () => {
               </option>
               {schoolData.length > 0 ? (
                 schoolData.map((school) => (
-                  <option key={school._id} value={school._id}>
+                  <option key={school._id} value={school.id}>
                     {capitalizeFirstLetter(
-                      `${school.name}, ${school.location}`
+                      `${school.name}, ${school.village}`
                     )}
                   </option>
                 ))
@@ -254,8 +255,8 @@ const StudentRegistration = () => {
               <option value="" disabled>
                 Select your Coordinator
               </option>
-              {coordinators.map((coordinator) => (
-                <option key={coordinator._id} value={coordinator._id}>
+              {coordinators.map((coordinator,index) => (
+                <option key={index} value={coordinator}>
                   {coordinator.firstName} {coordinator.lastName}
                 </option>
               ))}
@@ -278,7 +279,7 @@ const StudentRegistration = () => {
           </div>
           <div className="mb-4">
             <label htmlFor="talukka" className="block text-gray-700">
-              Taluka
+              talukka
             </label>
             <input
               type="text"
@@ -286,7 +287,7 @@ const StudentRegistration = () => {
               name="talukka"
               value={formData.talukka}
               onChange={handleChange}
-              placeholder="Taluka"
+              placeholder="talukka"
               className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 text-gray-700"
               required
             />
