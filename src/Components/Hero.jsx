@@ -18,7 +18,7 @@ const Hero = () => {
             {/* Govt. Authorised */}
           </h2>
           <h1 className="text-orange-600 dark:text-orange-400 text-4xl font-bold mb-4">
-            Pursuing Our Dreams To Create A Better Tomorrow !
+            Chasing Our Vision for a Brighter Future !
           </h1>
           <p className="text-zinc-700 dark:text-zinc-600 text-lg mb-2">
             Std 1st to 7th

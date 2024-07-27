@@ -26,17 +26,20 @@ const Header = () => {
     <header className="bg-white shadow relative ">
       <div className="container mx-auto px-4 py-6 flex justify-between items-center">
         <Link to={"/"}>
-          <img src="/logo.jpeg" alt="Logo" className="h-14" />
+          <div className="flex items-center gap-2">
+            <img src="/logo.jpeg" alt="Logo" className="h-14" />
+            <p className="font-medium">ज्ञानांकूर प्रज्ञाशोध परीक्षा 2024-25</p>
+          </div>
         </Link>
+
         <button onClick={handleMenu} className="lg:hidden">
           {menu ? <CloseIcon /> : <MenuIcon />}
         </button>
         <nav
-          className={`space-x-4 ${
-            menu
-              ? "py-10 w-full left-0 gap-3 text-center bg-zinc-100 absolute top-24 flex flex-col"
-              : "hidden"
-          } lg:flex items-center`}
+          className={`space-x-4 ${menu
+            ? "py-10 w-full left-0 gap-3 text-center bg-zinc-100 absolute top-24 flex flex-col"
+            : "hidden"
+            } lg:flex items-center`}
         >
           <Link to="/" className="text-yellow-500 hover:text-yellow-700">
             Home
