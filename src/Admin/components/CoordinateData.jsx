@@ -30,6 +30,9 @@ const CoordinateData = () => {
                 <th className="py-2 px-4 border-b">Name</th>
                 <th className="py-2 px-4 border-b">Email</th>
                 <th className="py-2 px-4 border-b">Phone</th>
+                <th className="py-2 px-4 border-b">District</th>
+                <th className="py-2 px-4 border-b">Talukka</th>
+                <th className="py-2 px-4 border-b">Password</th>
                 {/* <th className="py-2 px-4 border-b">School</th> */}
                 {/* Add additional headers as needed */}
               </tr>
@@ -43,6 +46,9 @@ const CoordinateData = () => {
                   </td>
                   <td className="py-2 px-4 border-b">{coordinator.email}</td>
                   <td className="py-2 px-4 border-b">{coordinator.phone}</td>
+                  <td className="py-2 px-4 border-b">{coordinator.district}</td>
+                  <td className="py-2 px-4 border-b">{coordinator.talukka}</td>
+                  <td className="py-2 px-4 border-b">{coordinator.password}</td>
                   {/* <td className="py-2 px-4 border-b">{coordinator.school}</td> */}
                   {/* Add additional columns as needed */}
                 </tr>
