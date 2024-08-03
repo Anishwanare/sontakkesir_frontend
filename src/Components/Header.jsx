@@ -143,7 +143,7 @@ const Header = () => {
                   <MenuItem>
                     {({ active }) => (
                       <Link
-                        to={"/student-register"}
+                        to={"/coordinator"}
                         className={classNames(
                           active
                             ? "bg-gray-100 text-gray-900"
@@ -151,7 +151,7 @@ const Header = () => {
                           "block px-4 py-2 text-sm"
                         )}
                       >
-                        Student
+                        Co-Ordinator
                       </Link>
                     )}
                   </MenuItem>
@@ -173,7 +173,7 @@ const Header = () => {
                   <MenuItem>
                     {({ active }) => (
                       <Link
-                        to={"/coordinator"}
+                        to={"/student-register"}
                         className={classNames(
                           active
                             ? "bg-gray-100 text-gray-900"
@@ -181,10 +181,12 @@ const Header = () => {
                           "block px-4 py-2 text-sm"
                         )}
                       >
-                        Co-Ordinator
+                        Student
                       </Link>
                     )}
                   </MenuItem>
+
+
                 </div>
               </MenuItems>
             </Transition>
