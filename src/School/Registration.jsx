@@ -145,6 +145,34 @@ const Registration = () => {
             />
           </div>
           <div className="mb-4">
+            <label htmlFor="headmastername" className="block text-black">
+              Head Master Name
+            </label>
+            <input
+              type="text"
+              id="headMasterName"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Head Master Name"
+              className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-black dark:border-gray-600 text-black"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="headmastermobile" className="block text-black">
+              Head Master Mobile
+            </label>
+            <input
+              type="text"
+              id="headmastermobile"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Head Master Mobile"
+              className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-black dark:border-gray-600 text-black"
+              required
+            />
+          </div>
+          <div className="mb-4">
             <label htmlFor="village" className="block text-black">
               Village
             </label>
