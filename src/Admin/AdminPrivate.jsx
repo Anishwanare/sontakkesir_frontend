@@ -5,7 +5,7 @@ import AdminLogin from "./components/AdminLogin";
 const AdminPrivate = () => {
   const isAuthenticated = localStorage.getItem("AdminToken");
 
-  return isAuthenticated ? <Outlet /> : <AdminLogin/>;
+  return isAuthenticated ? <Outlet /> : <Navigate to="/admin-login" />;
 };
 
 export default AdminPrivate;

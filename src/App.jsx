@@ -41,20 +41,18 @@ const App = () => {
         <Route path="/student-register" element={<StudentRegistration />} />
         <Route path="/school-register" element={<Registration />} />
         <Route path="/coordinator" element={<CoordinatorRegistration />} />
+        <Route
+          path="/admin-login"
+          element={
+            isAuthenticated ? (
+              <Navigate to="/admin-dashboard" />
+            ) : (
+              <AdminLogin />
+            )
+          }
+        />
         <Route element={<AdminPrivate />}>
-          <Route
-            path="/admin-login"
-            element={
-              isAuthenticated ? (
-                <Navigate to="/admin-dashboard" />
-              ) : (
-                <Navigate to="/admin-login" />
-                
-              )
-            }
-          />
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
-          <Route path="/admin-login" element={<AdminLogin />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
