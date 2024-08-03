@@ -30,7 +30,7 @@ const StudentRegistration = () => {
     password: "",
     phone: "",
     villageName: "",
-    talukka: "", 
+    talukka: "",
     district: "",
     role: "Student", // Default role
     school: "",
@@ -70,7 +70,7 @@ const StudentRegistration = () => {
           password: "",
           phone: "",
           villageName: "",
-          talukka: "", 
+          talukka: "",
           district: "",
           role: "Student",
           school: "",
@@ -85,6 +85,7 @@ const StudentRegistration = () => {
     } finally {
       setLoading(false);
     }
+    console.log(formData.coordinator);
     // console.log(formData.school);
   };
 
@@ -255,8 +256,8 @@ const StudentRegistration = () => {
               <option value="" disabled>
                 Select your Coordinator
               </option>
-              {coordinators.map((coordinator,index) => (
-                <option key={index} value={coordinator}>
+              {coordinators.map((coordinator, index) => (
+                <option key={index} value={coordinator.id}>
                   {coordinator.firstName} {coordinator.lastName}
                 </option>
               ))}

@@ -55,6 +55,7 @@ const StudentData = () => {
                   <td className="py-2 px-4 border-b">{student.lastName}</td>
                   <td className="py-2 px-4 border-b">{student.phone}</td>
                   <td className="py-2 px-4 border-b">{student.school}</td>
+                  <td className="py-2 px-4 border-b">{student.coordinator}</td>
                   <td className="py-2 px-4 border-b">{student.className}</td>
                   <td className="py-2 px-4 border-b">{student.talukka}</td>
                   <td className="py-2 px-4 border-b">{student.district}</td>
