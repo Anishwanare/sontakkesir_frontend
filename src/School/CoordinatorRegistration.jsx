@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const CoordinatorRegistration = () => {
   const [schoolData, setSchoolData] = useState([]);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -54,11 +54,11 @@ const CoordinatorRegistration = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (coordinatorID !== "311721") {
+    if (formData.coordinatorID !== "311721") {
       toast.error("Invalid Coordinator ID");
       return;
     } else {
-      setLoading(true)
+      setLoading(true);
       
       try {
         const response = await axios.post(
@@ -85,10 +85,10 @@ const CoordinatorRegistration = () => {
           district: "",
           talukka: "",
           password: "",
+          coordinatorID: "",  // Resetting Coordinator ID field
         });
       }
     }
-
   };
 
   return (
@@ -254,7 +254,7 @@ const CoordinatorRegistration = () => {
         <div className="mb-4">
           <label
             className="block text-sm font-semibold mb-1"
-            htmlFor="Coordinator Id"
+            htmlFor="coordinatorID"
           >
             Coordinator ID
           </label>
@@ -274,7 +274,7 @@ const CoordinatorRegistration = () => {
           type="submit"
           className="bg-blue-500 text-white py-2 px-4 rounded-md font-semibold hover:bg-blue-600 transition duration-200"
         >
-          Register
+          {loading ? 'Registering...' : 'Register'}
         </button>
       </form>
     </div>
