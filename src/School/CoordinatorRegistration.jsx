@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const CoordinatorRegistration = () => {
   const [schoolData, setSchoolData] = useState([]);
-  const[loading,setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -15,6 +15,7 @@ const CoordinatorRegistration = () => {
     district: "",
     talukka: "",
     password: "",
+    coordinatorID: "",
   });
 
   // Function to capitalize the first letter of a string
@@ -51,23 +52,29 @@ const CoordinatorRegistration = () => {
 
   // Handle form submission
   const handleSubmit = async (e) => {
-    setLoading(true)
     e.preventDefault();
-    try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_APP_API_BASE_URL}/api/v4/coordinator/register`,
-        formData
-      );
-      if (response.data.status) {
-        toast.success("Coordinator registered successfully");
-        // Reset form data after successful registration
-        
-      } else {
-        toast.error(response?.data?.message || "Registration failed");
-      }
-    } catch (err) {
-      toast.error(err.response?.data?.message || "Something went wrong!");
-    }finally{
+
+    if (coordinatorID !== "311721") {
+      toast.error("Invalid Coordinator ID");
+      return;
+    } else {
+      setLoading(true)
+      
+      try {
+        const response = await axios.post(
+          `${import.meta.env.VITE_APP_API_BASE_URL}/api/v4/coordinator/register`,
+          formData
+        );
+        if (response.data.status) {
+          toast.success("Coordinator registered successfully");
+          // Reset form data after successful registration
+
+        } else {
+          toast.error(response?.data?.message || "Registration failed");
+        }
+      } catch (err) {
+        toast.error(err.response?.data?.message || "Something went wrong!");
+      } finally {
         setLoading(false);
         setFormData({
           firstName: "",
@@ -79,7 +86,9 @@ const CoordinatorRegistration = () => {
           talukka: "",
           password: "",
         });
+      }
     }
+
   };
 
   return (
@@ -237,6 +246,23 @@ const CoordinatorRegistration = () => {
             id="password"
             name="password"
             value={formData.password}
+            onChange={handleChange}
+            className="w-full px-3 py-2 border rounded-md outline-none focus:border-blue-500"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-sm font-semibold mb-1"
+            htmlFor="Coordinator Id"
+          >
+            Coordinator ID
+          </label>
+          <input
+            type="text"
+            id="coordinatorID"
+            name="coordinatorID"
+            value={formData.coordinatorID}
             onChange={handleChange}
             className="w-full px-3 py-2 border rounded-md outline-none focus:border-blue-500"
             required
