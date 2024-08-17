@@ -92,6 +92,11 @@ const Registration = () => {
 
       if (response.data?.status) {
         toast.success(response.data?.message);
+        // console.log(headMasterName);
+        // console.log(headMasterMobile);
+        console.log(response?.data);
+        
+        
 
       } else {
         toast.error(response.data?.message);

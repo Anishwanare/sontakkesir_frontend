@@ -47,7 +47,6 @@ const SchoolData = () => {
             <tbody>
               {schoolData.map((school, index) => (
                 <tr key={index} className="hover:bg-gray-100">
-
                   <td className="py-2 px-4 border-b">{index + 1} )</td>
                   <td className="py-2 px-4 border-b">{school.name}</td>
                   <td className="py-2 px-4 border-b">{school.district}</td>
