@@ -19,6 +19,7 @@ import AdminDashboard from "./Admin/AdminDashboard";
 import CoordinatorRegistration from "./School/CoordinatorRegistration";
 import AdminLogin from "./Admin/components/AdminLogin";
 import AdminPrivate from "./Admin/AdminPrivate";
+import Gallery from "./Components/Gallery";
 
 const App = () => {
   const isAuthenticated = localStorage.getItem("AdminToken");
@@ -41,6 +42,7 @@ const App = () => {
         <Route path="/student-register" element={<StudentRegistration />} />
         <Route path="/school-register" element={<Registration />} />
         <Route path="/coordinator" element={<CoordinatorRegistration />} />
+        <Route path="//gallery" element={<Gallery />} />
         <Route
           path="/admin-login"
           element={
