@@ -9,7 +9,6 @@ import axios from "axios";
 const AdminDashboard = () => {
   const [activeSection, setActiveSection] = useState("Schools");
   const [admin, setAdmin] = useState(null);
-  // anish
 
   useEffect(() => {
     const fetchAdminInfo = async () => {
@@ -22,7 +21,6 @@ const AdminDashboard = () => {
         );
         if (response?.data?.status) {
           setAdmin(response?.data.admin[0]);
-          // console.log(response?.data?.admin);
         }
       } catch (error) {
         console.error("Error fetching admin info:", error);
@@ -32,14 +30,16 @@ const AdminDashboard = () => {
   }, []);
 
   return (
-    <div className="flex h-screen">
-      <div className="bg-blue-600 text-white w-64 p-4 flex flex-col">
+    <div className="flex flex-col lg:flex-row h-screen">
+      {/* Sidebar */}
+      <div className="bg-blue-600 text-white w-full lg:w-64 p-4 flex lg:flex-col items-center lg:items-start lg:justify-start justify-between">
         <div className="flex items-center mb-8">
           <img alt="logo" src="/logo.jpeg" className="mr-2 w-10" />
           <span className="text-lg font-semibold">Dnyaneshwar Sontakke</span>
         </div>
-        <nav className="flex-1">
-          <ul className="space-y-4">
+
+        <nav className="flex-1 lg:w-full w-auto">
+          <ul className="space-y-4 lg:space-y-4 flex lg:flex-col justify-between">
             {[
               { name: "Schools", icon: "/school.png" },
               { name: "Students", icon: "/student.png" },
@@ -64,7 +64,8 @@ const AdminDashboard = () => {
             ))}
           </ul>
         </nav>
-        <div className="mt-auto">
+
+        <div className="mt-4 lg:mt-auto">
           <a href="#" className="flex items-center space-x-2">
             <img alt="settings-icon" src="https://placehold.co/24x24" />
             <span className="text-white">Settings</span>
@@ -72,32 +73,33 @@ const AdminDashboard = () => {
         </div>
       </div>
 
+      {/* Main content */}
       <div className="flex-1 flex flex-col">
         <header className="flex items-center justify-between p-4 border-b border-zinc-200">
           {/* search */}
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 w-full lg:w-auto">
             <img alt="search-icon" src="https://placehold.co/24x24" />
             <input
               type="text"
               placeholder="Search..."
-              className="bg-zinc-100 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="bg-zinc-100 p-2 w-full lg:w-auto rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
           <div className="flex items-center space-x-4">
-            {/* <img alt="notification-icon" src="https://placehold.co/24x24" /> */}
             <div className="flex items-center space-x-2">
-              {/* <img
-                alt="profile-picture"
-                src="https://placehold.co/32x32"
-                className="rounded-full"
-              /> */}
-              <span>Welcome : </span>
+              <span>Welcome: </span>
               <span>{admin ? admin.name : "Loading..."}</span>
-              {/* <img alt="dropdown-icon" src="https://placehold.co/24x24" /> */}
             </div>
           </div>
-          <div className="">
-            <button type="button" onClick={()=>{localStorage.removeItem("AdminToken")}}>Logout</button>
+          <div>
+            <button
+              type="button"
+              onClick={() => {
+                localStorage.removeItem("AdminToken");
+              }}
+            >
+              Logout
+            </button>
           </div>
         </header>
 
