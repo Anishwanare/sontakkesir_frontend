@@ -39,7 +39,7 @@ const AdminDashboard = () => {
         </div>
 
         <nav className="flex-1 lg:w-full w-auto">
-          <ul className="space-y-4 lg:space-y-4 flex lg:flex-col md:justify-between">
+          <ul className="space-y-4 lg:space-y-4 flex lg:flex-col justify-start md:justify-between">
             {[
               { name: "Schools", icon: "/school.png" },
               { name: "Students", icon: "/student.png" },
