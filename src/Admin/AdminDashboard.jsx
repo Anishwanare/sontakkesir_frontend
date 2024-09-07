@@ -104,7 +104,7 @@ const AdminDashboard = () => {
         </header>
 
         <main className="flex-1 p-4">
-          <div className="border-2 border-dashed border-zinc-300 rounded-lg h-full p-4">
+          <div className="border-2 border-dashed border-zinc-300 rounded-lg h-full md:p-4">
             {activeSection === "Schools" && <SchoolData />}
             {activeSection === "Students" && <StudentData />}
             {activeSection === "Messages" && <MessagesData />}
