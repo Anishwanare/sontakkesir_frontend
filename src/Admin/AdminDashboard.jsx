@@ -46,7 +46,7 @@ const AdminDashboard = () => {
               { name: "Messages", icon: "/message.png" },
               { name: "Coordinator", icon: "/coordinator.png" },
             ].map((section) => (
-              <li key={section.name} className="flex items-center justify-start space-x-2">
+              <li key={section.name} className="flex  justify-start space-x-2">
                 <img
                   alt={`${section.name.toLowerCase()}-icon`}
                   src={section.icon}
