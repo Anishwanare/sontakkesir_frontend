@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const SchoolData = () => {
   const [schoolData, setSchoolData] = useState([]);
@@ -42,10 +43,10 @@ const SchoolData = () => {
         }
       );
       setSchoolData((prevData) => prevData.filter((school) => school.id !== id));
-      alert("School deleted successfully!");
+      toast.success("School deleted successfully!");
     } catch (error) {
       console.error("Error deleting school:", error);
-      alert("Failed to delete the school. Please try again.");
+      toast.error(error.response.data?.message);
     }
   };
 

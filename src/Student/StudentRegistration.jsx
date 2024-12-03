@@ -234,9 +234,9 @@ const StudentRegistration = () => {
               <option value="" disabled>
                 Select your class
               </option>
-              {classes.map((className, index) => (
-                <option key={index} value={className}>
-                  {className}
+              {classes.map((coordinator, index) => (
+                <option key={index} value={coordinator}>
+                  {coordinator}
                 </option>
               ))}
             </select>

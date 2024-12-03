@@ -94,7 +94,7 @@ const StudentData = () => {
       </div>
 
       {filteredData.length > 0 ? (
-        <div className="overflow-x-auto">
+        <div className=" overflow-scroll">
           <table className="min-w-full bg-white border border-gray-200">
             <thead>
               <tr>

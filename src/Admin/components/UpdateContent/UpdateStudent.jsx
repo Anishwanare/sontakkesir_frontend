@@ -19,6 +19,21 @@ const UpdateStudent = () => {
     });
 
     const [loading, setLoading] = useState(false);
+    const [coordinators, setCoordinators] = useState([]);
+
+    useEffect(() => {
+        const fetchCoordinators = async () => {
+            try {
+                const response = await axios.get(
+                    `${import.meta.env.VITE_APP_API_BASE_URL}/api/v4/coordinator/fetch`
+                );
+                setCoordinators(response?.data?.coordinators || []);
+            } catch (error) {
+                toast.error("Error fetching Coordinator data!");
+            }
+        };
+        fetchCoordinators();
+    }, []);
 
     useEffect(() => {
         const fetchStudent = async () => {
@@ -146,18 +161,27 @@ const UpdateStudent = () => {
                     />
                 </div>
 
-                <div>
-                    <label htmlFor="coordinator" className="block font-medium mb-1">
+                <div className="mb-4">
+                    <label htmlFor="coordinator" className="block text-gray-700">
                         Coordinator
                     </label>
-                    <input
-                        type="text"
+                    <select
                         id="coordinator"
                         name="coordinator"
                         value={student.coordinator}
                         onChange={handleChange}
-                        className="w-full p-2 border border-gray-300 rounded"
-                    />
+                        className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 text-gray-700"
+                        required
+                    >
+                        <option value="" disabled>
+                            Select your Coordinator
+                        </option>
+                        {coordinators.map((coordinator, index) => (
+                            <option key={index} value={coordinator.id}>
+                                {coordinator.firstName} {coordinator.lastName}
+                            </option>
+                        ))}
+                    </select>
                 </div>
 
                 <div>

@@ -30,7 +30,7 @@ const AdminDashboard = () => {
   }, []);
 
   return (
-    <div className="flex flex-col lg:flex-row h-screen">
+    <div className="flex flex-col lg:flex-row h-screen max-h-[100%]">
       {/* Sidebar */}
       <div className="bg-blue-600 text-white w-full lg:w-64 p-4 flex flex-col justify-between">
         {/* Logo Section */}
@@ -72,18 +72,18 @@ const AdminDashboard = () => {
         </nav>
 
         {/* Settings Section */}
-        <div className="mt-auto">
+        {/* <div className="mt-auto">
           <a href="#" className="flex items-center space-x-2">
             <img alt="settings-icon" src="https://placehold.co/24x24" />
             <span className="text-white">Settings</span>
           </a>
-        </div>
+        </div> */}
       </div>
 
 
 
       {/* Main content */}
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col overflow-scroll">
         <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 border-b border-zinc-200">
           {/* search */}
           <div className="flex items-center space-x-2 w-full sm:w-auto mb-4 sm:mb-0">
