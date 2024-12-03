@@ -4,6 +4,7 @@ import StudentData from "./components/StudentData";
 import MessagesData from "./components/MessagesData";
 import CoordinateData from "./components/CoordinateData";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const AdminDashboard = () => {
   const [activeSection, setActiveSection] = useState("Schools");
@@ -33,10 +34,12 @@ const AdminDashboard = () => {
       {/* Sidebar */}
       <div className="bg-blue-600 text-white w-full lg:w-64 p-4 flex flex-col justify-between">
         {/* Logo Section */}
-        <div className="flex items-center mb-8">
-          <img alt="logo" src="/logo.jpeg" className="mr-2 w-10" />
-          <span className="text-lg font-semibold">Dnyaneshwar Sontakke</span>
-        </div>
+        <Link to={"/"}>
+          <div className="flex items-center mb-8">
+            <img alt="logo" src="/logo.jpeg" className="mr-2 w-10" />
+            <span className="text-lg font-semibold">Dnyaneshwar Sontakke</span>
+          </div>
+        </Link>
 
         {/* Navigation Section */}
         <nav className="flex-1 w-full mb-8"> {/* Added mb-8 for spacing */}
