@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const StudentData = () => {
   const [studentData, setStudentData] = useState([]);
@@ -33,6 +34,32 @@ const StudentData = () => {
 
     fetchStudents();
   }, []);
+
+  const handleDelete = async (id) => {
+    try {
+      const confirmDelete = window.confirm("Are you sure you want to delete this student?");
+      if (!confirmDelete) return;
+
+      await axios.delete(
+        `${import.meta.env.VITE_APP_API_BASE_URL}/api/v3/student/delete/student/${id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          }
+        }
+      );
+
+      // Update state after deletion
+      const updatedData = studentData.filter((student) => student._id !== id);
+      setStudentData(updatedData);
+      setFilteredData(updatedData);
+
+      alert("Student deleted successfully");
+    } catch (error) {
+      console.error("Error deleting student:", error);
+      alert("Failed to delete student");
+    }
+  };
 
   useEffect(() => {
     if (selectedSchool) {
@@ -80,11 +107,12 @@ const StudentData = () => {
                 <th className="py-2 px-4 border-b">Talukka</th>
                 <th className="py-2 px-4 border-b">District</th>
                 <th className="py-2 px-4 border-b">Created At</th>
+                <th className="py-2 px-4 border-b">Actions</th>
               </tr>
             </thead>
             <tbody>
               {filteredData.map((student, index) => (
-                <tr key={index} className="hover:bg-gray-100">
+                <tr key={student._id} className="hover:bg-gray-100">
                   <td className="py-2 px-4 border-b">{index + 1}</td>
                   <td className="py-2 px-4 border-b">
                     {student.firstName} {student.middleName} {student.lastName}
@@ -97,6 +125,17 @@ const StudentData = () => {
                   <td className="py-2 px-4 border-b">{student.district}</td>
                   <td className="py-2 px-4 border-b">
                     {new Date(student.createdAt).toLocaleDateString()}
+                  </td>
+                  <td className="py-2 px-4 border-b">
+                    <button className="text-blue-500" ><Link to={`/admin/update-student/${student._id}`}>Update</Link></button>
+                  </td>
+                  <td className="py-2 px-4 border-b">
+                    <button
+                      className="text-red-500 ml-2"
+                      onClick={() => handleDelete(student._id)}
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}
