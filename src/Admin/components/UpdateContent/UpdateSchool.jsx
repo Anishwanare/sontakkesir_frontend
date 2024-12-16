@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { HashLoader } from 'react-spinners';
 
 const UpdateSchool = () => {
     const { id } = useParams(); // Retrieve the school ID from the URL
@@ -55,7 +56,7 @@ const UpdateSchool = () => {
         setError(null);
         try {
             setLoading(true);
-            await axios.put(`${import.meta.env.VITE_APP_API_BASE_URL}/api/v2/school/edit-school/${id}`, formData);
+            await axios.put(`${import.meta.env.VITE_APP_API_BASE_URL}/api/v2/school/edit-school/${id}`, formData, { withCredentials: true, new: true });
             setLoading(false);
             navigate('/admin-dashboard');
         } catch (err) {
@@ -69,7 +70,7 @@ const UpdateSchool = () => {
             <h2 className="text-2xl font-bold mb-6">Update School Details</h2>
             {error && <p className="text-red-600 mb-4">{error}</p>}
             {loading ? (
-                <p>Loading...</p>
+                <div className="flex justify-center items-center h-screen" color="#1276e2"><HashLoader /></div>
             ) : (
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">

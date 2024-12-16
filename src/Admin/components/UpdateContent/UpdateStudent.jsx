@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import HashLoader from "react-spinners/HashLoader";
 
 const UpdateStudent = () => {
     const { id } = useParams(); // Extract student ID from the URL
@@ -18,9 +19,11 @@ const UpdateStudent = () => {
         district: "",
     });
 
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false); // Loading for form submission
+    const [fetching, setFetching] = useState(true); // Loading for fetching data
     const [coordinators, setCoordinators] = useState([]);
 
+    // Fetch Coordinators
     useEffect(() => {
         const fetchCoordinators = async () => {
             try {
@@ -35,23 +38,27 @@ const UpdateStudent = () => {
         fetchCoordinators();
     }, []);
 
+    // Fetch Student Details
     useEffect(() => {
         const fetchStudent = async () => {
+            setFetching(true);
             try {
                 const response = await axios.get(
                     `${import.meta.env.VITE_APP_API_BASE_URL}/api/v3/student/getme/student/${id}`
                 );
                 setStudent(response.data.getStudent);
-                console.log(response.data.getStudent);
-
             } catch (error) {
                 console.error("Error fetching student data:", error);
+                toast.error("Error fetching student data!");
+            } finally {
+                setFetching(false);
             }
         };
 
         fetchStudent();
     }, [id]);
 
+    // Handle Form Input Changes
     const handleChange = (e) => {
         const { name, value } = e.target;
         setStudent((prevStudent) => ({
@@ -60,6 +67,7 @@ const UpdateStudent = () => {
         }));
     };
 
+    // Handle Form Submission
     const handleUpdate = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -82,6 +90,15 @@ const UpdateStudent = () => {
             setLoading(false);
         }
     };
+
+    // Show Spinner while fetching data
+    if (fetching) {
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <HashLoader color="#1276e2" />
+            </div>
+        );
+    }
 
     return (
         <div className="p-6 max-w-xl mx-auto">
@@ -161,8 +178,8 @@ const UpdateStudent = () => {
                     />
                 </div>
 
-                <div className="mb-4">
-                    <label htmlFor="coordinator" className="block text-gray-700">
+                <div>
+                    <label htmlFor="coordinator" className="block font-medium mb-1">
                         Coordinator
                     </label>
                     <select
@@ -170,7 +187,7 @@ const UpdateStudent = () => {
                         name="coordinator"
                         value={student.coordinator}
                         onChange={handleChange}
-                        className="px-2 block w-full mt-1 py-2 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 text-gray-700"
+                        className="w-full p-2 border border-gray-300 rounded"
                         required
                     >
                         <option value="" disabled>
@@ -231,7 +248,7 @@ const UpdateStudent = () => {
                     className="w-full bg-blue-500 text-white p-2 rounded"
                     disabled={loading}
                 >
-                    {loading ? "Updating..." : "Update Student"}
+                    {loading ? <HashLoader size={20} color="#fff" /> : "Update Student"}
                 </button>
             </form>
         </div>

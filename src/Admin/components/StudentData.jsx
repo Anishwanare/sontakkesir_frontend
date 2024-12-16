@@ -1,31 +1,25 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 const StudentData = () => {
   const [studentData, setStudentData] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
   const [schools, setSchools] = useState([]);
   const [selectedSchool, setSelectedSchool] = useState("");
+  const API_BASE_URL = import.meta.env.VITE_APP_API_BASE_URL;
 
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_APP_API_BASE_URL}/api/v3/student/get-students`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        const { data } = await axios.get(`${API_BASE_URL}/api/v3/student/get-students`, {
+          headers: { "Content-Type": "application/json" },
+        });
 
-        const data = response?.data?.getStudent || [];
-        setStudentData(data);
-        setFilteredData(data);
+        const students = data?.getStudent || [];
+        setStudentData(students);
 
-        // Extract unique schools from the student data
-        const uniqueSchools = [...new Set(data.map((student) => student.school))];
+        // Extract unique schools from student data
+        const uniqueSchools = [...new Set(students.map((student) => student.school))];
         setSchools(uniqueSchools);
       } catch (error) {
         console.error("Error fetching student data:", error);
@@ -33,26 +27,19 @@ const StudentData = () => {
     };
 
     fetchStudents();
-  }, []);
+  }, [API_BASE_URL]);
 
   const handleDelete = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this student?")) return;
+
     try {
-      const confirmDelete = window.confirm("Are you sure you want to delete this student?");
-      if (!confirmDelete) return;
+      await axios.delete(`${API_BASE_URL}/api/v3/student/delete/student/${id}`, {
+        headers: { "Content-Type": "application/json" },
+      });
 
-      await axios.delete(
-        `${import.meta.env.VITE_APP_API_BASE_URL}/api/v3/student/delete/student/${id}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          }
-        }
-      );
-
-      // Update state after deletion
+      // Update state after successful deletion
       const updatedData = studentData.filter((student) => student._id !== id);
       setStudentData(updatedData);
-      setFilteredData(updatedData);
 
       alert("Student deleted successfully");
     } catch (error) {
@@ -61,19 +48,14 @@ const StudentData = () => {
     }
   };
 
-  useEffect(() => {
-    if (selectedSchool) {
-      const filtered = studentData.filter(
-        (student) => student.school === selectedSchool
-      );
-      setFilteredData(filtered);
-    } else {
-      setFilteredData(studentData);
-    }
-  }, [selectedSchool, studentData]);
+  // Filter students by school selection
+  const filteredData = selectedSchool
+    ? studentData.filter((student) => student.school === selectedSchool)
+    : studentData;
 
   return (
     <div className="p-4">
+      {/* School Filter Dropdown */}
       <div className="mb-4">
         <label htmlFor="schoolSelect" className="block mb-2">
           Select School:
@@ -93,21 +75,28 @@ const StudentData = () => {
         </select>
       </div>
 
+      {/* Student Data Table */}
       {filteredData.length > 0 ? (
-        <div className=" overflow-scroll">
+        <div className="overflow-auto">
           <table className="min-w-full bg-white border border-gray-200">
             <thead>
               <tr>
-                <th className="py-2 px-4 border-b">Sr No.</th>
-                <th className="py-2 px-4 border-b">Full Name</th>
-                <th className="py-2 px-4 border-b">Phone</th>
-                <th className="py-2 px-4 border-b">School</th>
-                <th className="py-2 px-4 border-b">Co-ordinator</th>
-                <th className="py-2 px-4 border-b">Class</th>
-                <th className="py-2 px-4 border-b">Talukka</th>
-                <th className="py-2 px-4 border-b">District</th>
-                <th className="py-2 px-4 border-b">Created At</th>
-                <th className="py-2 px-4 border-b">Actions</th>
+                {[
+                  "Sr No.",
+                  "Full Name",
+                  "Phone",
+                  "School",
+                  "Coordinator",
+                  "Class",
+                  "Talukka",
+                  "District",
+                  "Created At",
+                  "Actions",
+                ].map((header, index) => (
+                  <th key={index} className="py-2 px-4 border-b">
+                    {header}
+                  </th>
+                ))}
               </tr>
             </thead>
             <tbody>
@@ -115,7 +104,7 @@ const StudentData = () => {
                 <tr key={student._id} className="hover:bg-gray-100">
                   <td className="py-2 px-4 border-b">{index + 1}</td>
                   <td className="py-2 px-4 border-b">
-                    {student.firstName} {student.middleName} {student.lastName}
+                    {`${student.firstName} ${student.middleName} ${student.lastName}`}
                   </td>
                   <td className="py-2 px-4 border-b">{student.phone}</td>
                   <td className="py-2 px-4 border-b">{student.school}</td>
@@ -126,13 +115,16 @@ const StudentData = () => {
                   <td className="py-2 px-4 border-b">
                     {new Date(student.createdAt).toLocaleDateString()}
                   </td>
-                  <td className="py-2 px-4 border-b">
-                    <button className="text-blue-500" ><Link to={`/admin/update-student/${student._id}`}>Update</Link></button>
-                  </td>
-                  <td className="py-2 px-4 border-b">
+                  <td className="py-2 px-4 border-b flex space-x-2">
+                    <Link
+                      to={`/admin/update-student/${student._id}`}
+                      className="text-blue-500"
+                    >
+                      Update
+                    </Link>
                     <button
-                      className="text-red-500 ml-2"
                       onClick={() => handleDelete(student._id)}
+                      className="text-red-500"
                     >
                       Delete
                     </button>
@@ -143,7 +135,7 @@ const StudentData = () => {
           </table>
         </div>
       ) : (
-        <div className="text-center py-4">Loading.......!</div>
+        <div className="text-center py-4">No students found!</div>
       )}
     </div>
   );

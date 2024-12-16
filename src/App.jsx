@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {
@@ -9,8 +9,7 @@ import {
   useNavigate,
   Navigate,
 } from "react-router-dom";
-import Home from "./Pages/Home";
-import Login from "./Student/Login";
+import { HashLoader } from "react-spinners"
 import Registration from "./School/Registration";
 import StudentRegistration from "./Student/StudentRegistration";
 import Notice from "./Components/notice";
@@ -23,6 +22,9 @@ import Gallery from "./Components/Gallery";
 import UpdateStudent from "./Admin/components/UpdateContent/UpdateStudent";
 import UpdateSchool from "./Admin/components/UpdateContent/UpdateSchool";
 
+const Home = lazy(() => import("./Pages/Home"))
+const Login = lazy(() => import("./Student/Login"))
+
 const App = () => {
   const isAuthenticated = Boolean(localStorage.getItem("AdminToken")); // Convert to a boolean
   const location = useLocation();
@@ -32,7 +34,7 @@ const App = () => {
   const showNotice = !excludedPaths.includes(location.pathname);
 
   return (
-    <div>
+    <Suspense fallback={<div className="flex justify-center items-center h-screen" color = "#1276e2"><HashLoader /></div>}>
       {/* Show notice only on certain paths */}
       {showNotice && (
         <Notice
@@ -73,7 +75,7 @@ const App = () => {
       </Routes>
 
       <ToastContainer position="top-center" />
-    </div>
+    </Suspense>
   );
 };
 
