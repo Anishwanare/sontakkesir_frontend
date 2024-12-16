@@ -33,7 +33,7 @@ const AdminLogin = () => {
         setSuccess("");
       }
     } catch (error) {
-      setError("Something went wrong, please try again!");
+      setError(error.response.data?.message);
       setSuccess("");
       navigateTo("/admin-login");
     } finally {
